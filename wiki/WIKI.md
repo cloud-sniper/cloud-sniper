@@ -26,7 +26,7 @@ The ***Cloud Sniper Analytics*** module allows to analyze the flow logs of the e
 
     To deploy Cloud Sniper you must run:
 
-    1.  ~$ git clone https://github.com/nicolasriverocorvalan/cloud-sniper.git
+    1.  ~$ git clone https://github.com/cloud-sniper/cloud-sniper.git
     2.  ~$ cd Cloud-Sniper
     3.  Set the environment variables corresponding to the account in the variables.tf file
     4.  Edit the main.tf file
