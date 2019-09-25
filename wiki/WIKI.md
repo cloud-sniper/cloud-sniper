@@ -27,7 +27,7 @@ The ***Cloud Sniper Analytics*** module allows to analyze the flow logs of the e
     To deploy Cloud Sniper you must run:
 
     1.  ~$ git clone https://github.com/cloud-sniper/cloud-sniper.git
-    2.  ~$ cd Cloud-Sniper
+    2.  ~$ cd cloud-sniper
     3.  Set the environment variables corresponding to the account in the variables.tf file
     4.  Edit the main.tf file
 
@@ -37,9 +37,9 @@ The ***Cloud Sniper Analytics*** module allows to analyze the flow logs of the e
             profile                   = "your-profile"
         }
 
-    5.  ~/Cloud-Sniper$ terraform init
-    6.  ~/Cloud-Sniper$ terraform plan
-    7.  ~/Cloud-Sniper$ terraform apply [yes]
+    5.  ~/cloud-sniper$ terraform init
+    6.  ~/cloud-sniper$ terraform plan
+    7.  ~/cloud-sniper$ terraform apply [yes]
 
 
 ### AWS artifacts integration:
