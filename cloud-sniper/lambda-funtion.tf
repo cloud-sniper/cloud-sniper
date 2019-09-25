@@ -5,7 +5,7 @@ resource "aws_lambda_function" "lambda_function_cloud_sniper" {
   memory_size      = 1024
   timeout          = 300
   role             = "${aws_iam_role.role_cloud_sniper.arn}"
-  runtime          = "python3.7"
+  runtime          = "python3.6"
   filename         = "${data.archive_file.lambda_function_cloud_sniper.output_path}"
   source_code_hash = "${data.archive_file.lambda_function_cloud_sniper.output_base64sha256}"
 
@@ -35,7 +35,7 @@ resource "aws_lambda_function" "lambda_function_cloud_sniper_tagging_ir" {
   memory_size      = 1024
   timeout          = 300
   role             = "${aws_iam_role.role_cloud_sniper_tagging.arn}"
-  runtime          = "python3.7"
+  runtime          = "python3.6"
   filename         = "${data.archive_file.lambda_function_cloud_sniper_tagging.output_path}"
   source_code_hash = "${data.archive_file.lambda_function_cloud_sniper_tagging.output_base64sha256}"
 }
