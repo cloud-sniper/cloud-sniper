@@ -4,7 +4,7 @@
 
 ### *What is Cloud Sniper?*
 
-***Cloud Sniper*** is a platform designed to manage *Security Operations* in cloud environments. It is an open platform which allows responding to security incidents by acurately analyzing and correlating native cloud artifacts. It is to be used as a *Virtual Security Operations Center (vSOC)* to detect and remediate security incidents providing a complete visibility of the company's cloud security posture.
+***Cloud Sniper*** is a platform designed to manage *Security Operations* in cloud environments. It is an open platform which allows responding to security incidents by accurately analyzing and correlating native cloud artifacts. It is to be used as a *Virtual Security Operations Center (vSOC)* to detect and remediate security incidents providing a complete visibility of the company's cloud security posture.
 
 With this platform, you will have a complete and comprehensive management of the security incidents, reducing the costs of having a group of level-1 security analysts hunting for cloud-based *Indicators of Compromise (IOC)*. These *IOCs*, if not correlated, will generate difficulties in detecting complex attacks. At the same time ***Cloud Sniper*** enables advanced security analysts integrate the platform with external forensic or incident-and-response tools to provide security feeds into the platform.
 
