@@ -29,7 +29,7 @@ To detect advanced attack techniques, which may easily be ignored, the ***Cloud 
         2.  NACLs filtering
         3.  IOCs knowledge database. 
         4.  Tactics, Techniques and Procedures (TTPs) used by the attacker
-    2.  Security playbooks
+    2.  Security playbooks for cloud-based environments
         1.  NIST approach
     3.  Automatic security tagging
     4.  Cloud Sniper Analytics
@@ -37,7 +37,7 @@ To detect advanced attack techniques, which may easily be ignored, the ***Cloud 
 
 ### Upcoming Features and Integrations
 
-    1.  Security playbooks for cloud-based environments
+    1.  CloudFlare integration
     2.  Security incidents centralized management for multiple accounts. Web Management UI
     3.  WAF analytics
     4.  Case management (automatic case creation)
