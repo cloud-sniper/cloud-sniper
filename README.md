@@ -37,7 +37,7 @@ To detect advanced attack techniques, which may easily be ignored, the ***Cloud 
 
 ### Upcoming Features and Integrations
 
-    1.  CloudFlare integration
+    1.  CloudFlare's WAF integration
     2.  Security incidents centralized management for multiple accounts. Web Management UI
     3.  WAF analytics
     4.  Case management (automatic case creation)
