@@ -29,7 +29,7 @@ To detect advanced attack techniques, which may easily be ignored, the ***Cloud 
         2.  NACLs filtering
         3.  IOCs knowledge database. 
         4.  Tactics, Techniques and Procedures (TTPs) used by the attacker
-    2.  Security playbooks for cloud-based environments
+    2.  Cloud-based security playbooks
         1.  NIST approach
     3.  Automatic security tagging
     4.  Cloud Sniper Analytics
