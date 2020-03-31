@@ -1,8 +1,6 @@
 ![alt text](../images/logo.png "Cloud Sniper")
 <br> </br>
-## *Cloud Security Operations*
-
-### *Cloud Sniper Analytics module*
+## *Cloud Sniper Analytics module*
 
 ***Cloud Sniper*** introduces an analytics module to analyze data, metrics and telemetry generated on the cloud. This first version analyzes VPC flows to detect beaconing (call home) patterns.
 

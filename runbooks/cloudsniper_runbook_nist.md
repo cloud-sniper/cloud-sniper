@@ -1,4 +1,4 @@
-# Cloud Sniper Playbook - NIST approach
+# Cloud Sniper Runbook - NIST approach
 
 1.  Asset Management
     
@@ -60,4 +60,3 @@
 
 
 
- 

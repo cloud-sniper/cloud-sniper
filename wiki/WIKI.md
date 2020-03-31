@@ -29,7 +29,7 @@ The ***Cloud Sniper Analytics*** module allows to analyze the flow logs of the e
     1.  ~$ git clone https://github.com/cloud-sniper/cloud-sniper.git
     2.  ~$ cd cloud-sniper
     3.  Set the environment variables corresponding to the account in the variables.tf file
-    4.  Edit the main.tf file
+    4.  Create main.tf file
 
         provider "aws" {
             region                    = "region"

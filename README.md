@@ -27,20 +27,17 @@ To detect advanced attack techniques, which may easily be ignored, the ***Cloud 
     1.  Automatic Incident and Response 
         1.  WAF filtering
         2.  NACLs filtering
-        3.  IOCs knowledge database. 
-        4.  Tactics, Techniques and Procedures (TTPs) used by the attacker
-    2.  Cloud-based security playbooks
+        3.  IOCs knowledge database 
+    2.  Cloud-based security runbooks
         1.  NIST approach
-    3.  Automatic security tagging
+    3.  Automatic tagging
     4.  Cloud Sniper Analytics
         1.  Beaconing detection with VPC Flow Logs (C2 detection analytics)
 
 ### Upcoming Features and Integrations
 
-    1.  CloudFlare's WAF integration
-    2.  Security incidents centralized management for multiple accounts. Web Management UI
+    1.  Multi-account IR release
+    2.  IAM security automation
+    2.  Web management UI. Centralized dashboard multi-account
     3.  WAF analytics
-    4.  Case management (automatic case creation)
-    5.  IOCs enrichment and Threat Intelligence feeds
-    6.  Automatic security reports based on well-known security standards (NIST)
-    7.  Integration with third-party security tools (DFIR)
+    5.  Third-party threat Intelligence feeds
