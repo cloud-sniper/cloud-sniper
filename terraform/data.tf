@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "iam_policy_document_cloud_sniper" {
+data "aws_iam_policy_document" "cloudsniper_policy_document" {
   statement {
     effect = "Allow"
 
@@ -93,14 +93,7 @@ data "aws_iam_policy_document" "iam_policy_document_cloud_sniper" {
   }
 }
 
-resource "aws_iam_policy" "iam_policy_cloud_sniper" {
-  name        = "iam_policy_cloud_sniper"
-  path        = "/"
-  description = "iam_policy_cloud_sniper"
-  policy      = "${data.aws_iam_policy_document.iam_policy_document_cloud_sniper.json}"
-}
-
-data "aws_iam_policy_document" "iam_policy_document_cloud_sniper_tagging_sniffer" {
+data "aws_iam_policy_document" "cloudsniper_policy_document_tagging" {
   statement {
     effect = "Allow"
 
@@ -130,14 +123,7 @@ data "aws_iam_policy_document" "iam_policy_document_cloud_sniper_tagging_sniffer
   }
 }
 
-resource "aws_iam_policy" "iam_policy_cloud_sniper_tagging_sniffer" {
-  name        = "iam_policy_cloud_sniper_tagging_sniffer"
-  path        = "/"
-  description = "iam_policy_cloud_sniper_tagging_sniffer"
-  policy      = "${data.aws_iam_policy_document.iam_policy_document_cloud_sniper_tagging_sniffer.json}"
-}
-
-data "aws_iam_policy_document" "iam_policy_document_cloud_sniper_tagging_incident_and_response" {
+data "aws_iam_policy_document" "cloudsniper_policy_document_tagging_incident_and_response" {
   statement {
     effect = "Allow"
 
@@ -176,9 +162,51 @@ data "aws_iam_policy_document" "iam_policy_document_cloud_sniper_tagging_inciden
   }
 }
 
-resource "aws_iam_policy" "iam_policy_cloud_sniper_tagging_incident_and_response" {
-  name        = "iam_policy_cloud_sniper_tagging_incident_and_response"
-  path        = "/"
-  description = "iam_policy_cloud_sniper_tagging_incident_and_response"
-  policy      = "${data.aws_iam_policy_document.iam_policy_document_cloud_sniper_tagging_incident_and_response.json}"
+data "aws_iam_policy_document" "cloudsniper_policy_document_assume" {
+  statement {
+    principals {
+      identifiers = ["lambda.amazonaws.com"]
+      type        = "Service"
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+data "aws_iam_policy_document" "cloudsniper_policy_firehose" {
+  statement {
+    principals {
+      identifiers = ["firehose.amazonaws.com"]
+      type        = "Service"
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+data "aws_iam_policy_document" "cloudsniper_policy_document_kinesis_waf" {
+  statement {
+    resources = ["*"]
+
+    actions = [
+      "ec2:Describe*",
+      "firehose:DeleteDeliveryStream",
+      "firehose:PutRecord",
+      "firehose:PutRecordBatch",
+      "firehose:UpdateDestination",
+      "s3:*",
+    ]
+  }
+}
+
+data "archive_file" "cloudsniper_archive_file_lambda_ir" {
+  type        = "zip"
+  source_dir  = "./lambdas/functions/cloud-sniper/"
+  output_path = "./lambdas/archives/lambda_function_cloud_sniper.zip"
+}
+
+data "archive_file" "cloudsniper_archive_file_lambda_tagging_ir" {
+  type        = "zip"
+  source_dir  = "./lambdas/functions/cloud-sniper-tagging/"
+  output_path = "./lambdas/archives/lambda_function_cloud_sniper_tagging_ir.zip"
 }

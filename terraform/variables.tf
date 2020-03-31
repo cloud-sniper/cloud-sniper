@@ -2,7 +2,7 @@
 // Cloud Sniper settings
 //-------------------------------------------------------------------
 
-variable "cloud_sniper_data_store" {
-  default     = "bucket-cloud-sniper-data-store"
-  description = "Bucket Cloud Sniper-data-store"
+variable "cloudsniper_data_store" {
+  default     = "bucket-name"
+  description = "cloudsniper S3 data-store"
 }

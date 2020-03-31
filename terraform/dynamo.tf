@@ -1,5 +1,5 @@
-resource "aws_dynamodb_table" "dynamo_table_cloud_sniper" {
-  name = "dynamo_table_cloud_sniper"
+resource "aws_dynamodb_table" "cloudsniper_table_ioc" {
+  name = "cloudsniper-table-ioc"
 
   read_capacity  = 5
   write_capacity = 5

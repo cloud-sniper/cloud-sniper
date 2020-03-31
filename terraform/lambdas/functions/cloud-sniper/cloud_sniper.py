@@ -8,7 +8,7 @@ from boto3.dynamodb.conditions import Attr
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
-IPSET_ID = os.environ['IPSET_CLOUD_SNIPER_AUTOMATIC_BLOCK_THIS_IPS']
+IPSET_ID = os.environ['CLOUDSNIPER-WAFREGIONAL-IPSET-BLOCK-THESE-IP']
 DYNAMO_TABLE = os.environ['DYNAMO_TABLE_CLOUD_SNIPER']
 SQS_QUEUE = os.environ['SQS_QUEUE_CLOUD_SNIPER']
 
