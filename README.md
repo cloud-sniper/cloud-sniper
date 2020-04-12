@@ -17,13 +17,9 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 ***Cloud Sniper*** is currently available for *AWS*, but it is to be extended to others cloud platforms.
 <br> </br>
 
-### WIKI => [HOW IT WORKS](wiki/WIKI.md)
+### [Wiki - How it works](wiki/WIKI.md)
 
-### Cloud Sniper releases
-
-###  EKOLABS - EKOPARTY 2019:
-
-#### Authors:
+### EKOLABS release - EKOPARTY 2019 - Authors:
  [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
  [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
@@ -37,13 +33,13 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
     4.  Cloud Sniper Analytics
         1.  Beaconing detection with VPC Flow Logs (C2 detection analytics)
 
-### Upcoming release (terraform + python)
+### UPCOMING features (terraform + python)
 
     1.  Multi-account IR lambda
     2.  IAM security automation lambda
     3.  Cloud Sniper Analytics - Enhanced C2 detection
 
-### *Terraform upcoming deployment*
+### *UPCOMING deployment*
 
 ![alt text](images/upcoming_deployment.png "Cloud Sniper")
 <br> </br>
