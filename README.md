@@ -23,9 +23,8 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 
 ###  EKOLABS - EKOPARTY 2019:
 
-#### Authors:<br> </br>
- [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)
- <br> </br>
+#### Authors:
+ [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
  [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
     1.  Automatic Incident and Response
@@ -49,4 +48,4 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 ![alt text](images/upcoming_deployment.png "Cloud Sniper")
 <br> </br>
 
-### [Contact us](<cloudsniper.cba@gmail.com>)
+### Contact us: <cloudsniper.cba@gmail.com>
