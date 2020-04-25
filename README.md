@@ -15,33 +15,43 @@ The cloud-based platform is deployed automatically and provides complete and nat
 To detect advanced attack techniques, which may easily be ignored, ***Cloud Sniper Analytics*** module correlates the events generating *IOCs*. These will give visibility on complex artifacts to analyze, helping both to stop the attack and to analyze the attacker's *TTPs*.
 
 ***Cloud Sniper*** is currently available for *AWS*, but it is to be extended to others cloud platforms.
-<br> </br>
 
 ### [Wiki - How it works](wiki/WIKI.md)
 
-### EKOLABS release - EKOPARTY 2019 - Authors:
- [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
- [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
+## *UPCOMING release*
 
-    1.  Automatic Incident and Response
-        1.  WAF filtering
-        2.  NACLs filtering
-        3.  IOCs knowledge database 
-    2.  Cloud-based security runbooks
-        1.  NIST approach
-    3.  Automatic tagging
-    4.  Cloud Sniper Analytics
-        1.  Beaconing detection with VPC Flow Logs (C2 detection analytics)
+### NEW features (terraform | python | docker)
 
-### UPCOMING features (terraform + python)
-
-    1.  Multi-account IR lambda
-    2.  IAM security automation lambda
-    3.  Cloud Sniper Analytics - Enhanced C2 detection
-
-### *UPCOMING deployment*
-
-![alt text](images/upcoming_deployment.png "Cloud Sniper")
+1.  Multi-account Incident and Response automation
+2.  IAM security automation lambda
+3.  Cloud Sniper Analytics - Enhanced C2 detection
+4.  Flask API
+5.  Apache Superset interactive visualizations
 <br> </br>
 
-### Contact us: <cloudsniper.cba@gmail.com>
+### NEW deployment
+
+![alt text](images/upcoming_deployment.png "Cloud Sniper")<br> </br>
+
+### Releases
+
+####  EKOLABS - EKOPARTY Security Conference 2019 (terraform | python | docker)
+1.  Automatic Incident and Response
+    1.  WAF filtering
+    2.  NACLs filtering
+    3.  IOCs knowledge database
+2.  Automatic tagging
+3.  Cloud Sniper Analytics
+4.  Beaconing detection with VPC Flow Logs
+5.  Terraform cloud-based security runbooks
+
+Authors:<br> </br>
+[Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
+[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
+
+### Contact us: <cloudsniper.cba@gmail.com><br> </br>
+
+### Main contributors:<br> </br>
+[Nicolás Rivero Corvalán](https://www.linkedin.com/in/riveronicolas/)  
+[Matías Marenchino](https://www.linkedin.com/in/mlmarenchino/)  
+[Alfredo Pardo](https://www.linkedin.com/in/alfredopardo/)
