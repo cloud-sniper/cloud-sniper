@@ -27,7 +27,6 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 3.  Cloud Sniper Analytics - Enhanced C2 detection
 4.  Flask API
 5.  Apache Superset interactive visualizations
-<br> </br>
 
 ### NEW deployment
 
