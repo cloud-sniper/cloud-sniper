@@ -45,7 +45,7 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 4.  Beaconing detection with VPC Flow Logs
 5.  Terraform cloud-based security runbooks
 
-Authors:<br> </br>
+Authors:  
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
