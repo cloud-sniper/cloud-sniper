@@ -49,9 +49,9 @@ Authors:<br> </br>
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
-### Contact us: <cloudsniper.cba@gmail.com><br> </br>
+### Contact us: <cloudsniper.cba@gmail.com>
 
-### Main contributors:<br> </br>
+### Main contributors:
 [Nicolás Rivero Corvalán](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino](https://www.linkedin.com/in/mlmarenchino/)  
 [Alfredo Pardo](https://www.linkedin.com/in/alfredopardo/)
