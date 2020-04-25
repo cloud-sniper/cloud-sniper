@@ -33,7 +33,7 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 
 ![alt text](images/upcoming_deployment.png "Cloud Sniper")<br> </br>
 
-### Releases
+### Cloud Sniper released
 
 ####  EKOLABS - EKOPARTY Security Conference 2019 (terraform | python | docker)
 1.  Automatic Incident and Response
