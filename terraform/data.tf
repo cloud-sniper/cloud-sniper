@@ -1,29 +1,8 @@
+data "aws_region" "current" {}
+
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "cloudsniper_policy_document" {
-  statement {
-    effect = "Allow"
-
-    actions = [
-      "waf-regional:GetIPSet",
-      "waf-regional:UpdateIPSet",
-      "waf-regional:GetChangeToken",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
-
-  statement {
-    effect = "Allow"
-
-    actions = [
-      "kms:*",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
 
   statement {
     effect = "Allow"
@@ -33,9 +12,7 @@ data "aws_iam_policy_document" "cloudsniper_policy_document" {
       "ec2:*NetworkAcl*",
     ]
 
-    resources = [
-      "*",
-    ]
+    resources = ["*"]
   }
 
   statement {
@@ -61,6 +38,31 @@ data "aws_iam_policy_document" "cloudsniper_policy_document" {
       "dynamodb:Query",
       "dynamodb:Scan",
       "dynamodb:DeleteItem",
+      "dynamodb:UpdateItem",
+    ]
+
+    resources = [
+      "arn:aws:dynamodb:${data.aws_region.current}:${data.aws_caller_identity.current.account_id}:table/${aws_dynamodb_table.cloudsniper_table_ioc.name}",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "sqs:*",
+    ]
+
+    resources = [
+      "arn:aws:sqs:${data.aws_region.current}:${data.aws_caller_identity.current.account_id}:${aws_sqs_queue.cloudsniper_sqs_queue.name}",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "iam:ListAccountAliases",
     ]
 
     resources = [
@@ -72,7 +74,9 @@ data "aws_iam_policy_document" "cloudsniper_policy_document" {
     effect = "Allow"
 
     actions = [
-      "sqs:*",
+      "waf-regional:GetIPSet",
+      "waf-regional:UpdateIPSet",
+      "waf-regional:GetChangeToken",
     ]
 
     resources = [
@@ -159,6 +163,20 @@ data "aws_iam_policy_document" "cloudsniper_policy_document_tagging_incident_and
         "&{aws:userid}",
       ]
     }
+  }
+}
+
+data "aws_iam_policy_document" "cloudsniper_policy_document_beaconing" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:*",
+    ]
+
+    resources = [
+      "*",
+    ]
   }
 }
 

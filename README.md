@@ -20,13 +20,14 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 
 ## *UPCOMING release*
 
-### NEW features (terraform | python | docker)
+### NEW features (terraform | python | docker | kubernetes)
 
 1.  Multi-account Incident and Response automation
 2.  IAM security automation lambda
 3.  Cloud Sniper Analytics - Enhanced C2 detection
-4.  Elastic SIEM integration
-5.  Kibana dashboards
+4.  Elastic|Kibana SIEM integration
+    1. Kubernetes deployments
+    2. Incident and Response dashboard templates
 
 ### NEW deployment
 
