@@ -25,8 +25,8 @@ To detect advanced attack techniques, which may easily be ignored, ***Cloud Snip
 1.  Multi-account Incident and Response automation
 2.  IAM security automation lambda
 3.  Cloud Sniper Analytics - Enhanced C2 detection
-4.  Flask API
-5.  Apache Superset interactive visualizations
+4.  Elastic SIEM integration
+5.  Kibana dashboards
 
 ### NEW deployment
 
@@ -49,8 +49,3 @@ Authors:
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
 ### Contact us: <cloudsniper.cba@gmail.com>
-
-### Main contributors:
-[Nicolás Rivero Corvalán](https://www.linkedin.com/in/riveronicolas/)  
-[Matías Marenchino](https://www.linkedin.com/in/mlmarenchino/)  
-[Alfredo Pardo](https://www.linkedin.com/in/alfredopardo/)
