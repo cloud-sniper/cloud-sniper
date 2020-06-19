@@ -25,17 +25,8 @@ With this platform, you have a complete and comprehensive management of the secu
    1. Kubernetes deployments
    2. Docker files
    3. Incident and Response dashboard templates
-   4. Messaging integration
-      1. Slack
-
-### NEW features (terraform | python | docker | kubernetes)
-
-1.  Multi-account Incident and Response automation
-2.  IAM security automation lambda
-3.  Cloud Sniper Analytics - Enhanced C2 detection
-4.  Elastic|Kibana SIEM integration
-    1. Kubernetes deployments
-    2. Incident and Response dashboard templates
+5. Messaging integration
+   1. Slack
 
 ### NEW deployment
 
