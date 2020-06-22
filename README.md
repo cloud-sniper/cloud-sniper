@@ -1,6 +1,6 @@
 ![alt text](images/logo.png "Cloud Sniper")
 <br> </br>
-## *Cloud Security Operations - Black Hat Arsenal 2020*
+## *Cloud Security Operations*
 
 ### *What is Cloud Sniper?*
 
@@ -16,7 +16,7 @@ With this platform, you get a complete and comprehensive management system of th
 
 ### [Wiki - How it works](wiki/WIKI.md)
 
-## *UPCOMING major release*
+## *UPCOMING major release - Black Hat Arsenal 2020*
 
 ###  New features (terraform | python | docker | kubernetes | Elastic-Kibana SIEM)
 
