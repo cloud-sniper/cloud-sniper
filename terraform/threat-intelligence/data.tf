@@ -150,7 +150,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_beaconing_detection
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store.id}",
+      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}",
     ]
   }
 
@@ -164,7 +164,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_beaconing_detection
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store.id}/*",
+      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}/*",
     ]
   }
 }
