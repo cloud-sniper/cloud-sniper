@@ -21,7 +21,7 @@ resource "aws_iam_role_policy_attachment" "cloud_sniper_role_policy_attachment_s
 #hub account
 resource "aws_iam_role" "cloud_sniper_role_threat_intelligence_automation" {
   for_each           = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
-  name               = "cloud-sniper-assume-role-threat-intelligence-automation"
+  name               = "cs-assume-role-threat-intelligence-automation-${data.aws_region.current.name}"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.cloud_sniper_policy_document_assume_threat_intelligence_automation.json
   tags               = local.cloud_sniper_tags
@@ -29,7 +29,7 @@ resource "aws_iam_role" "cloud_sniper_role_threat_intelligence_automation" {
 
 resource "aws_iam_policy" "cloud_sniper_policy_threat_intelligence_automation" {
   for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
-  name     = "cloud-sniper-policy-threat-intelligence-automation"
+  name     = "cs-policy-threat-intelligence-automation-${data.aws_region.current.name}"
   policy   = data.aws_iam_policy_document.cloud_sniper_policy_document_threat_intelligence_automation["hub"].json
 }
 
@@ -43,14 +43,14 @@ resource "aws_iam_role_policy_attachment" "cloud_sniper_role_policy_attachment_t
 #hub account
 resource "aws_iam_role" "cloud_sniper_role_beaconing_detection" {
   for_each           = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
-  name               = "cloud-sniper-assume-role-beaconing-detection"
+  name               = "cs-assume-role-beaconing-detection-${data.aws_region.current.name}"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.cloud_sniper_policy_document_assume_beaconing_detection.json
 }
 
 resource "aws_iam_policy" "cloud_sniper_policy_beaconing_detection" {
   for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
-  name     = "cloud-sniper-policy-beaconing-detection"
+  name     = "cs-policy-beaconing-detection-${data.aws_region.current.name}"
   path     = "/"
   policy   = data.aws_iam_policy_document.cloud_sniper_policy_document_beaconing_detection.json
 }

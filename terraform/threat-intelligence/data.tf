@@ -5,7 +5,7 @@ data "aws_region" "current" {}
 data "aws_iam_policy_document" "cloud_sniper_policy_document_assume_spoke_threat_intelligence_automation" {
   statement {
     principals {
-      identifiers = ["arn:aws:iam::${local.hub_account_id}:role/${local.cloud_sniper_assume_role_threat_intelligence_automation}"]
+      identifiers = ["arn:aws:iam::${local.hub_account_id}:role/${format("%s-%s", local.cloud_sniper_assume_role_threat_intelligence_automation, data.aws_region.current.name)}"]
       type        = "AWS"
     }
 
