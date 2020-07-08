@@ -28,7 +28,6 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_spoke_threat_intell
 }
 
 data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence_automation" {
-  for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
 
   statement {
     effect = "Allow"
@@ -70,7 +69,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
     ]
 
     resources = [
-      "arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${aws_dynamodb_table.cloud_sniper_table_ioc["hub"].name}",
+      "arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${aws_dynamodb_table.cloud_sniper_table["hub"].name}",
     ]
   }
 

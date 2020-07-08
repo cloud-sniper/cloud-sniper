@@ -1,4 +1,4 @@
-#all spoke accounts
+## all spoke accounts
 resource "aws_iam_role" "cloud_sniper_role_spoke_threat_intelligence_automation" {
   for_each           = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? {} : { spoke : true }
   name               = "cloud-sniper-role-spoke-threat-intelligence-automation"
@@ -18,7 +18,7 @@ resource "aws_iam_role_policy_attachment" "cloud_sniper_role_policy_attachment_s
   policy_arn = aws_iam_policy.cloud_sniper_policy_spoke_threat_intelligence_automation[each.key].arn
 }
 
-#hub account
+## hub account
 resource "aws_iam_role" "cloud_sniper_role_threat_intelligence_automation" {
   for_each           = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
   name               = "cs-assume-role-threat-intelligence-automation-${data.aws_region.current.name}"
@@ -30,7 +30,7 @@ resource "aws_iam_role" "cloud_sniper_role_threat_intelligence_automation" {
 resource "aws_iam_policy" "cloud_sniper_policy_threat_intelligence_automation" {
   for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
   name     = "cs-policy-threat-intelligence-automation-${data.aws_region.current.name}"
-  policy   = data.aws_iam_policy_document.cloud_sniper_policy_document_threat_intelligence_automation["hub"].json
+  policy   = data.aws_iam_policy_document.cloud_sniper_policy_document_threat_intelligence_automation.json
 }
 
 resource "aws_iam_role_policy_attachment" "cloud_sniper_role_policy_attachment_threat_intelligence_automation" {

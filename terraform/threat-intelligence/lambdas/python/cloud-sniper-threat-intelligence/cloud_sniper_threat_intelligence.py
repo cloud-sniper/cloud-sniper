@@ -14,6 +14,9 @@ DYNAMO_TABLE = os.environ['DYNAMO_TABLE_CLOUD_SNIPER']
 WEBHOOK_URL = os.environ['WEBHOOK_URL_IR']
 HUB_ACCOUNT_ID = os.environ['HUB_ACCOUNT_ID_CLOUD_SNIPER']
 ROLE_SPOKE = os.environ['ROLE_SPOKE_CLOUD_SNIPER']
+BUCKET_NAME = os.environ['BUCKET_NAME']
+IOCS_PATH = os.environ['IOCS_PATH']
+NOW = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 message = []
 json_a = []
@@ -740,6 +743,22 @@ def delete_sqs():
             log.info('Processed and deleted message: %s' % receipt_handle)
     except Exception as e:
         log.info("SQS queue could not be deleted" + str(e))
+
+
+def put_s3(res):
+    s3_resource = boto3.resource('s3')
+    bucket_name = BUCKET_NAME
+    iocs_path = IOCS_PATH
+
+    bucket = s3_resource.Bucket(name=bucket_name)
+
+    if iocs_path.startswith("/"):
+        iocs_path = iocs_path[1:]
+    if iocs_path.endswith("/"):
+        iocs_path = iocs_path[:-1]
+
+    (bucket.Object(key=f"{iocs_path}/beaconing_detection_{NOW}.json")
+           .put(Body=bytes(json.dumps(res).encode('UTF-8'))))
 
 
 def security_ir(event, context):
