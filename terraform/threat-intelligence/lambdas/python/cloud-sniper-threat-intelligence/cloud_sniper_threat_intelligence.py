@@ -693,17 +693,6 @@ def clean_nacls():
 
 def message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags):
 
-    exclusion_list = [
-            "[{'value': 'infra-ghe-one' 'key': 'Name'} {'value': 'infra' 'key': 'env'}]",
-            "[{'value': 'infra-ghe-two' 'key': 'Name'} {'value': 'infra' 'key': 'env'}]",
-            "[{'value': 'infra-ghe-one' 'key': 'Name'} {'value': 'infra' 'key': 'Environment'}]",
-            "[{'value': 'infra-ghe-two' 'key': 'Name'} {'value': 'infra' 'key': 'Environment'}]",
-            "[{'value': 'infra-pan-vm-us-east-1' 'key': 'Name'}]",
-            "[{'value': 'infra-panorama-log-vm-us-east-1' 'key': 'Name'}]",
-            "[{'value': 'infra-panorama-vm-us-east-1' 'key': 'Name'}]",
-            "[{'value': 'vpn' 'key': 'Purpose'} {'value': 'team-ent-eng' 'key': 'Owner'} {'value': 'none' 'key': 'ComplianceScope'} {'value': 'asapp' 'key': 'Partner'} {'value': 'infra' 'key': 'Environment'} {'value': 'engineering' 'key': 'Department'} {'value': 'yellow' 'key': 'DataClassification'} {'value': 'infra-asapp-vpn' 'key': 'Name'}]"
-        ]
-
     excluded = False
     nacl_url = "https://console.aws.amazon.com/vpc/home?region=us-east-1#acls:networkAclId=" + nacl_id + ";sort=networkAclId"
 
