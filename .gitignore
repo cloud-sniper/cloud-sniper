@@ -8,4 +8,3 @@ terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvarsf
 terraform.tfstate.*.backup
-
