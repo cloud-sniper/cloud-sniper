@@ -7,3 +7,4 @@ main.tf
 terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvarsf
+locals.tf
