@@ -108,6 +108,33 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
       "*",
     ]
   }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:ListObjects",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:GetObject",
+      "s3:PutObject",
+      "s3:GetObject",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}/*",
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "cloud_sniper_policy_document_assume_threat_intelligence_automation" {

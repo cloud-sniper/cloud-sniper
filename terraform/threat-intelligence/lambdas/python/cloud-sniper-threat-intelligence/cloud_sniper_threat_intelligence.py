@@ -139,6 +139,7 @@ def search_ioc():
 
                     ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags
                     log.info("IOCs: " + str(ioc))
+                    put_to_s3(ioc)
 
                     if len(json_a) == 0:
                         json_a.append(ioc)
@@ -202,6 +203,7 @@ def search_ioc():
 
                     ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags
                     log.info("IOCs: " + str(ioc))
+                    put_to_s3(ioc)
 
                     if len(json_a) == 0:
                         json_a.append(ioc)
@@ -261,6 +263,7 @@ def search_ioc():
 
                     ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags
                     log.info("IOCs: " + str(ioc))
+                    put_to_s3(ioc)
 
                     if len(json_a) == 0:
                         json_a.append(ioc)
@@ -745,7 +748,9 @@ def delete_sqs():
         log.info("SQS queue could not be deleted" + str(e))
 
 
-def put_s3(res):
+def put_to_s3(ioc):
+    log.info("Sending findings to S3: %s" % json.dumps(str(ioc)))
+
     s3_resource = boto3.resource('s3')
     bucket_name = BUCKET_NAME
     iocs_path = IOCS_PATH
@@ -757,8 +762,11 @@ def put_s3(res):
     if iocs_path.endswith("/"):
         iocs_path = iocs_path[:-1]
 
-    (bucket.Object(key=f"{iocs_path}/beaconing_detection_{NOW}.json")
-           .put(Body=bytes(json.dumps(res).encode('UTF-8'))))
+    try:
+        (bucket.Object(key=f"{iocs_path}/iocs_{NOW}.json")
+               .put(Body=bytes(json.dumps(ioc).encode('UTF-8'))))
+    except Exception as e:
+        log.info("Could not put the object to S3" + str(e))
 
 
 def security_ir(event, context):
