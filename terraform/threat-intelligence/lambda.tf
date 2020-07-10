@@ -2,7 +2,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
   for_each         = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
   function_name    = "cloud-sniper-lambda-threat-intelligence-automation"
   description      = "Cloud Sniper threat intelligence automation"
-  handler          = "cloud_sniper_threat_intelligence.security_ir"
+  handler          = "cloud_sniper_threat_intelligence.cloud_sniper_threat_intelligence"
   memory_size      = 1024
   timeout          = 300
   runtime          = "python3.6"
