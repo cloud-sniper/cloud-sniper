@@ -49,7 +49,7 @@ resource "aws_cloudwatch_metric_alarm" "cloud_sniper_cloudwatch_metric_alarm_thr
   namespace           = "AWS/Lambda"
   statistic           = "Sum"
   threshold           = "1"
-  alarm_actions       = [aws_sns_topic.cloud_sniper_sns_alarm["hub"].arn]
+  alarm_actions       = [aws_sns_topic.cloud_sniper_sns_topic_threat_intelligence["hub"].arn]
   alarm_description   = local.cloud_sniper_sns_alarm_description
   datapoints_to_alarm = "1"
 

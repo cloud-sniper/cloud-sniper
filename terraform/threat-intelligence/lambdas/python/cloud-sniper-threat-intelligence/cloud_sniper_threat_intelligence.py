@@ -16,7 +16,6 @@ HUB_ACCOUNT_ID = os.environ['HUB_ACCOUNT_ID_CLOUD_SNIPER']
 ROLE_SPOKE = os.environ['ROLE_SPOKE_CLOUD_SNIPER']
 BUCKET_NAME = os.environ['BUCKET_NAME']
 IOCS_PATH = os.environ['IOCS_PATH']
-NOW = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 message = []
 json_a = []
@@ -76,22 +75,18 @@ def search_ioc():
         try:
             flag = 0
 
-            try:
-                for dt in networkConnectionAction:
-                    if data["detail"]["type"] == dt:
-                        flag = 1
-                        break
-                for dt in portProbeAction:
-                    if data["detail"]["type"] == dt:
-                        flag = 2
-                        break
-
-            except Exception as e:
-
-                for e in instanceDetails:
-                    if data["type"] == e:
-                        flag = 3
-                        break
+            for dt in networkConnectionAction:
+                if data["detail"]["type"] == dt:
+                    flag = 1
+                    break
+            for dt in portProbeAction:
+                if data["detail"]["type"] == dt:
+                    flag = 2
+                    break
+            for e in instanceDetails:
+                if data["detail"]["type"] == e:
+                    flag = 3
+                    break
 
             if flag == 1:
                 ioc = []
@@ -218,51 +213,51 @@ def search_ioc():
                 ioc = []
 
                 src_ip = (json.dumps(
-                    data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                    data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                         "ipAddressV4"])).strip('"')
-                direction = data["service"]["action"]["networkConnectionAction"]["connectionDirection"]
+                direction = data["detail"]["service"]["action"]["networkConnectionAction"]["connectionDirection"]
 
                 if ipaddress.ip_address(src_ip).is_private is False and direction == "INBOUND":
 
-                    account_id = data["accountId"]
-                    region = data["region"]
-                    subnet_id = data["resource"]["instanceDetails"]["networkInterfaces"][0]["subnetId"]
-                    instance_id = data["resource"]["instanceDetails"]["instanceId"]
-                    ttp = data["type"]
+                    account_id = data["detail"]["accountId"]
+                    region = data["detail"]["region"]
+                    subnet_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["subnetId"]
+                    instance_id = data["detail"]["resource"]["instanceDetails"]["instanceId"]
+                    ttp = data["detail"]["type"]
 
                     asn = \
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "asn"]
                     asn_org = (
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "asnOrg"]).replace(",", " ")
                     isp = (
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "isp"]).replace(",", " ")
                     org = (
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "org"]).replace(",", " ")
                     country = \
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["country"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["country"][
                             "countryName"]
                     try:
-                        city = str((data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["city"][
+                        city = str((data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["city"][
                             "cityName"]).replace(",", " "))
                     except Exception as e:
                         city = "NIA"
 
                     nacl_id = get_netacl_id(subnet_id, account_id)
-                    hits = str(data["service"]["count"])
-                    vpc_id = data["resource"]["instanceDetails"]["networkInterfaces"][0]["vpcId"]
-                    sg_name = data["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupName"]
-                    sg_id = data["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupId"]
-                    tags = (str(data["resource"]["instanceDetails"]["tags"])).replace(",", "")
+                    hits = str(data["detail"]["service"]["count"])
+                    vpc_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["vpcId"]
+                    sg_name = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupName"]
+                    sg_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupId"]
+                    tags = (str(data["detail"]["resource"]["instanceDetails"]["tags"])).replace(",", "")
                     account_alias = str(get_account_alias(account_id))
-                    event_first_seen = str(data["service"]["eventFirstSeen"])
+                    event_first_seen = str(data["detail"]["service"]["eventFirstSeen"])
 
                     ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags + "," + event_first_seen
                     log.info("IOCs: " + str(ioc))
@@ -774,6 +769,7 @@ def put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, i
         'cloud.provider': 'aws'
     }
 
+    NOW = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     s3_resource = boto3.resource('s3')
     bucket_name = BUCKET_NAME
     iocs_path = IOCS_PATH
