@@ -706,28 +706,27 @@ def message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subn
     nacl_url = "https://console.aws.amazon.com/vpc/home?region=us-east-1#acls:networkAclId=" + nacl_id + ";sort=networkAclId"
 
     try:
-        if not excluded:
-            log.info("Sending message to Slack")
+        log.info("Sending message to Slack")
 
-            data = {
-                'text': '***************************************************************\n\n'
-                        + '*ATTACKER IP:* ' + src_ip + '   *HITS:* ' + hits + '\n'
-                        + '*TTP:* ' + ttp + '\n'
-                        + '*ACCOUNT ID:* ' + '`' + account_id + '`' + '   *ACCOUNT ALIAS:* ' + account_alias + '   *INSTANCE ID:* ' + '`' + instance_id + '`' + '\n'
-                        + '*TAGS:* ' + tags + '\n'
-                        + '*NACL:* ' + nacl_url + '\n'
-                        + '*VPC ID:* ' + '`' + vpc_id + '`' + '   *SUBNET ID:* ' + '`' + subnet_id + '`' + '\n'
-                        + '*COUNTRY:* ' + country + '   *CITY:* ' + city + '\n'
-                        + '*ASN ORG:* ' + asn_org + '   *ORG:* ' + org + '   *ISP:* ' + isp + '\n'
-                        + '*FIRST SEEN:* ' + event_first_seen + '\n'
-                        + '***************************************************************',
-                'username': 'CLOUD SNIPER BUDDY',
-                'icon_emoji': ':robot_face:'
-            }
+        data = {
+            'text': '***************************************************************\n\n'
+                    + '*ATTACKER IP:* ' + src_ip + '   *HITS:* ' + hits + '\n'
+                    + '*TTP:* ' + ttp + '\n'
+                    + '*ACCOUNT ID:* ' + '`' + account_id + '`' + '   *ACCOUNT ALIAS:* ' + account_alias + '   *INSTANCE ID:* ' + '`' + instance_id + '`' + '\n'
+                    + '*TAGS:* ' + tags + '\n'
+                    + '*NACL:* ' + nacl_url + '\n'
+                    + '*VPC ID:* ' + '`' + vpc_id + '`' + '   *SUBNET ID:* ' + '`' + subnet_id + '`' + '\n'
+                    + '*COUNTRY:* ' + country + '   *CITY:* ' + city + '\n'
+                    + '*ASN ORG:* ' + asn_org + '   *ORG:* ' + org + '   *ISP:* ' + isp + '\n'
+                    + '*FIRST SEEN:* ' + event_first_seen + '\n'
+                    + '***************************************************************',
+            'username': 'CLOUD SNIPER BUDDY',
+            'icon_emoji': ':robot_face:'
+        }
 
-            response = requests.post(WEBHOOK_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
+        response = requests.post(WEBHOOK_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
 
-            log.info('Sending message to Slack. Response: ' + str(response.text) + ' Response Code: ' + str(response.status_code))
+        log.info('Sending message to Slack. Response: ' + str(response.text) + ' Response Code: ' + str(response.status_code))
 
     except Exception as e:
         log.info("Message could not be send to Slack: " + str(e))
@@ -799,12 +798,12 @@ def cloud_sniper_threat_intelligence(event, context):
     log.info("Processing GuardDuty findings: %s" % json.dumps(event))
 
     try:
-        # clean_nacls()
+        clean_nacls()
         message = read_sqs()
         if message:
             search_ioc()
             incident_and_response()
-            # delete_sqs()
+            delete_sqs()
 
             log.info("Findings properly processed")
 
