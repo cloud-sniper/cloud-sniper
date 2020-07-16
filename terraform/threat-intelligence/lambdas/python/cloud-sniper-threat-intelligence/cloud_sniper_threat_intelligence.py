@@ -11,12 +11,11 @@ log.setLevel(logging.INFO)
 
 QUEUE_URL = os.environ['SQS_QUEUE_CLOUD_SNIPER']
 DYNAMO_TABLE = os.environ['DYNAMO_TABLE_CLOUD_SNIPER']
-WEBHOOK_URL = os.environ['WEBHOOK_URL_IR']
+WEBHOOK_URL = os.environ['WEBHOOK_URL_CLOUD_SNIPER']
 HUB_ACCOUNT_ID = os.environ['HUB_ACCOUNT_ID_CLOUD_SNIPER']
 ROLE_SPOKE = os.environ['ROLE_SPOKE_CLOUD_SNIPER']
 BUCKET_NAME = os.environ['BUCKET_NAME']
 IOCS_PATH = os.environ['IOCS_PATH']
-NOW = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 message = []
 json_a = []
@@ -76,22 +75,18 @@ def search_ioc():
         try:
             flag = 0
 
-            try:
-                for dt in networkConnectionAction:
-                    if data["detail"]["type"] == dt:
-                        flag = 1
-                        break
-                for dt in portProbeAction:
-                    if data["detail"]["type"] == dt:
-                        flag = 2
-                        break
-
-            except Exception as e:
-
-                for e in instanceDetails:
-                    if data["type"] == e:
-                        flag = 3
-                        break
+            for dt in networkConnectionAction:
+                if data["detail"]["type"] == dt:
+                    flag = 1
+                    break
+            for dt in portProbeAction:
+                if data["detail"]["type"] == dt:
+                    flag = 2
+                    break
+            for e in instanceDetails:
+                if data["detail"]["type"] == e:
+                    flag = 3
+                    break
 
             if flag == 1:
                 ioc = []
@@ -136,10 +131,11 @@ def search_ioc():
                     sg_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupId"]
                     tags = (str(data["detail"]["resource"]["instanceDetails"]["tags"])).replace(",", "")
                     account_alias = str(get_account_alias(account_id))
+                    event_first_seen = str(data["detail"]["service"]["eventFirstSeen"])
 
-                    ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags
+                    ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags + "," + event_first_seen
                     log.info("IOCs: " + str(ioc))
-                    put_to_s3(ioc)
+                    put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen)
 
                     if len(json_a) == 0:
                         json_a.append(ioc)
@@ -200,10 +196,11 @@ def search_ioc():
                     sg_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupId"]
                     tags = (str(data["detail"]["resource"]["instanceDetails"]["tags"])).replace(",", "")
                     account_alias = str(get_account_alias(account_id))
+                    event_first_seen = str(data["detail"]["service"]["eventFirstSeen"])
 
-                    ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags
+                    ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags + "," + event_first_seen
                     log.info("IOCs: " + str(ioc))
-                    put_to_s3(ioc)
+                    put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen)
 
                     if len(json_a) == 0:
                         json_a.append(ioc)
@@ -216,54 +213,55 @@ def search_ioc():
                 ioc = []
 
                 src_ip = (json.dumps(
-                    data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                    data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                         "ipAddressV4"])).strip('"')
-                direction = data["service"]["action"]["networkConnectionAction"]["connectionDirection"]
+                direction = data["detail"]["service"]["action"]["networkConnectionAction"]["connectionDirection"]
 
                 if ipaddress.ip_address(src_ip).is_private is False and direction == "INBOUND":
 
-                    account_id = data["accountId"]
-                    region = data["region"]
-                    subnet_id = data["resource"]["instanceDetails"]["networkInterfaces"][0]["subnetId"]
-                    instance_id = data["resource"]["instanceDetails"]["instanceId"]
-                    ttp = data["type"]
+                    account_id = data["detail"]["accountId"]
+                    region = data["detail"]["region"]
+                    subnet_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["subnetId"]
+                    instance_id = data["detail"]["resource"]["instanceDetails"]["instanceId"]
+                    ttp = data["detail"]["type"]
 
                     asn = \
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "asn"]
                     asn_org = (
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "asnOrg"]).replace(",", " ")
                     isp = (
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "isp"]).replace(",", " ")
                     org = (
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"][
                             "organization"][
                             "org"]).replace(",", " ")
                     country = \
-                        data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["country"][
+                        data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["country"][
                             "countryName"]
                     try:
-                        city = str((data["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["city"][
+                        city = str((data["detail"]["service"]["action"]["networkConnectionAction"]["remoteIpDetails"]["city"][
                             "cityName"]).replace(",", " "))
                     except Exception as e:
                         city = "NIA"
 
                     nacl_id = get_netacl_id(subnet_id, account_id)
-                    hits = str(data["service"]["count"])
-                    vpc_id = data["resource"]["instanceDetails"]["networkInterfaces"][0]["vpcId"]
-                    sg_name = data["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupName"]
-                    sg_id = data["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupId"]
-                    tags = (str(data["resource"]["instanceDetails"]["tags"])).replace(",", "")
+                    hits = str(data["detail"]["service"]["count"])
+                    vpc_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["vpcId"]
+                    sg_name = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupName"]
+                    sg_id = data["detail"]["resource"]["instanceDetails"]["networkInterfaces"][0]["securityGroups"][0]["groupId"]
+                    tags = (str(data["detail"]["resource"]["instanceDetails"]["tags"])).replace(",", "")
                     account_alias = str(get_account_alias(account_id))
+                    event_first_seen = str(data["detail"]["service"]["eventFirstSeen"])
 
-                    ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags
+                    ioc = ttp + "," + hits + "," + account_id + "," + account_alias + "," + region + "," + subnet_id + "," + src_ip + "," + instance_id + "," + nacl_id + "," + country + "," + city + "," + asn_org + "," + org + "," + isp + "," + asn + "," + vpc_id + "," + sg_name + "," + sg_id + "," + tags + "," + event_first_seen
                     log.info("IOCs: " + str(ioc))
-                    put_to_s3(ioc)
+                    put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen)
 
                     if len(json_a) == 0:
                         json_a.append(ioc)
@@ -335,27 +333,27 @@ def incident_and_response():
         ioc = len(lst)
 
         rule_no = "-1"
-        if ioc == 19:
-            ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags = jsa.split(",")
+        if ioc == 20:
+            ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen = jsa.split(",")
 
             lst_nacl = get_nacl_rule(nacl_id, account_id)
             rule_no = int(lst_nacl.pop())
             result = create_nacl_rule(nacl_id, src_ip, rule_no, account_id, set(lst_nacl))
 
             if result:
-                update_ioc(src_ip, ts, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags)
-                # message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags)
+                update_ioc(src_ip, ts, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags, event_first_seen)
+                message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags, event_first_seen)
         else:
             country = city = asn_org = org = isp = asn = "NIA"
-            ttp, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, vpc_id, sg_name, sg_id, tags = jsa.split(",")
+            ttp, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, vpc_id, sg_name, sg_id, tags, event_first_seen = jsa.split(",")
 
             lst_nacl = get_nacl_rule(nacl_id, account_id)
             rule_no = int(lst_nacl.pop())
             result = create_nacl_rule(nacl_id, src_ip, rule_no, account_id, set(lst_nacl))
 
             if result:
-                update_ioc(src_ip, ts, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags)
-                # message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags)
+                update_ioc(src_ip, ts, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags, event_first_seen)
+                message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags, event_first_seen)
 
 
 def get_nacl_rule(nacl_id, account_id):
@@ -457,7 +455,7 @@ def create_nacl_rule(nacl_id, attacker_ip, rule_no, account_id, lst_nacl):
         else:
             return False
 
-    elif len(lst_nacl) == 19:
+    elif len(lst_nacl) == 20:
         log.info("NACL is full, no more than 18 entries can be added")
 
     else:
@@ -485,7 +483,7 @@ def get_account_alias(account_id):
     return result
 
 
-def update_ioc(attacker_ip, timestamp, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags):
+def update_ioc(attacker_ip, timestamp, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags, event_first_seen):
 
     log.info("Sending IOCs to DynamoDB ...")
 
@@ -505,11 +503,11 @@ def update_ioc(attacker_ip, timestamp, ttp, hits, region, account_id, account_al
 
             if updated == 0:
                 create_entry_attackers(attacker_ip, timestamp, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id,
-                                       instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags)
+                                       instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags, event_first_seen)
 
         else:
             create_entry_attackers(attacker_ip, timestamp, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id,
-                                   instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags)
+                                   instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags, event_first_seen)
 
     except Exception as e:
         log.info("DynamoDB entry could not be updated" + str(e))
@@ -556,7 +554,7 @@ def update_entry_attackers(attacker_ip, hits, rule_no, deleted):
         log.info("DynamoDB could not be updated:" + str(e))
 
 
-def create_entry_attackers(attacker_ip, timestamp, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags):
+def create_entry_attackers(attacker_ip, timestamp, ttp, hits, region, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, asn, rule_no, vpc_id, sg_name, sg_id, tags, event_first_seen):
     if not city:
         city = "NIA"
 
@@ -587,7 +585,8 @@ def create_entry_attackers(attacker_ip, timestamp, ttp, hits, region, account_id
                 'org': str(org),
                 'isp': str(isp),
                 'asn': str(asn),
-                'rule_no': str(rule_no)
+                'rule_no': str(rule_no),
+                'event_first_seen': str(event_first_seen)
             }
         )
 
@@ -697,37 +696,32 @@ def clean_nacls():
         log.info("NACLs could not be deleted: " + str(e))
 
 
-def message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags):
+def message_to_slack(src_ip, ttp, hits, account_id, account_alias, nacl_id, subnet_id, instance_id, country, city, asn_org, org, isp, vpc_id, tags, event_first_seen):
 
-    excluded = False
     nacl_url = "https://console.aws.amazon.com/vpc/home?region=us-east-1#acls:networkAclId=" + nacl_id + ";sort=networkAclId"
 
-    for e in exclusion_list:
-        if e == tags:
-            excluded = True
-
     try:
-        if not excluded:
-            log.info("Sending message to Slack")
+        log.info("Sending message to Slack")
 
-            data = {
-                'text': '***************************************************************\n\n'
-                        + '*ATTACKER IP:* ' + src_ip + '   *HITS:* ' + hits + '\n'
-                        + '*TTP:* ' + ttp + '\n'
-                        + '*ACCOUNT ID:* ' + '`' + account_id + '`' + '   *ACCOUNT ALIAS:* ' + account_alias + '   *INSTANCE ID:* ' + '`' + instance_id + '`' + '\n'
-                        + '*TAGS:* ' + tags + '\n'
-                        + '*NACL:* ' + nacl_url + '\n'
-                        + '*VPC ID:* ' + '`' + vpc_id + '`' + '   *SUBNET ID:* ' + '`' + subnet_id + '`' + '\n'
-                        + '*COUNTRY:* ' + country + '   *CITY:* ' + city + '\n'
-                        + '*ASN ORG:* ' + asn_org + '   *ORG:* ' + org + '   *ISP:* ' + isp + '\n'
-                        + '***************************************************************',
-                'username': 'IR BUDDY',
-                'icon_emoji': ':robot_face:'
-            }
+        data = {
+            'text': '***************************************************************\n\n'
+                    + '*ATTACKER IP:* ' + src_ip + '   *HITS:* ' + hits + '\n'
+                    + '*TTP:* ' + ttp + '\n'
+                    + '*ACCOUNT ID:* ' + '`' + account_id + '`' + '   *ACCOUNT ALIAS:* ' + account_alias + '   *INSTANCE ID:* ' + '`' + instance_id + '`' + '\n'
+                    + '*TAGS:* ' + tags + '\n'
+                    + '*NACL:* ' + nacl_url + '\n'
+                    + '*VPC ID:* ' + '`' + vpc_id + '`' + '   *SUBNET ID:* ' + '`' + subnet_id + '`' + '\n'
+                    + '*COUNTRY:* ' + country + '   *CITY:* ' + city + '\n'
+                    + '*ASN ORG:* ' + asn_org + '   *ORG:* ' + org + '   *ISP:* ' + isp + '\n'
+                    + '*FIRST SEEN:* ' + event_first_seen + '\n'
+                    + '***************************************************************',
+            'username': 'CLOUD SNIPER BUDDY',
+            'icon_emoji': ':robot_face:'
+        }
 
-            response = requests.post(WEBHOOK_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
+        response = requests.post(WEBHOOK_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
 
-            log.info('Sending message to Slack. Response: ' + str(response.text) + ' Response Code: ' + str(response.status_code))
+        log.info('Sending message to Slack. Response: ' + str(response.text) + ' Response Code: ' + str(response.status_code))
 
     except Exception as e:
         log.info("Message could not be send to Slack: " + str(e))
@@ -748,9 +742,34 @@ def delete_sqs():
         log.info("SQS queue could not be deleted" + str(e))
 
 
-def put_to_s3(ioc):
-    log.info("Sending findings to S3: %s" % json.dumps(str(ioc)))
+def put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen):
+    log.info("Sending findings to S3 ...")
 
+    dataset = {
+        'ttp': str(ttp),
+        'hits': str(hits),
+        'cloud.account.id': str(account_id),
+        'cloud.account.name': str(account_alias),
+        'cloud.region': str(region),
+        'interface.subnet.id': str(subnet_id),
+        'source.ip': str(src_ip),
+        'cloud.instance.id': str(instance_id),
+        'interface.nacl.id': str(nacl_id),
+        'country': str(country),
+        'city': str(city),
+        'asn_org': str(asn_org),
+        'org': str(org),
+        'isp': str(isp),
+        'asn':  str(asn),
+        'interface.vpc.id': str(vpc_id),
+        'interface.security_group.name': str(sg_name),
+        'interface.security_group.id': str(sg_id),
+        'tags': str(tags),
+        'timestamp': str(event_first_seen),
+        'cloud.provider': 'aws'
+    }
+
+    NOW = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     s3_resource = boto3.resource('s3')
     bucket_name = BUCKET_NAME
     iocs_path = IOCS_PATH
@@ -764,12 +783,12 @@ def put_to_s3(ioc):
 
     try:
         (bucket.Object(key=f"{iocs_path}/iocs_{NOW}.json")
-               .put(Body=bytes(json.dumps(ioc).encode('UTF-8'))))
+               .put(Body=bytes(json.dumps(dataset).encode('UTF-8'))))
     except Exception as e:
         log.info("Could not put the object to S3" + str(e))
 
 
-def security_ir(event, context):
+def cloud_sniper_threat_intelligence(event, context):
     global message
 
     log.info("Processing GuardDuty findings: %s" % json.dumps(event))

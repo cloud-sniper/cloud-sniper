@@ -2,7 +2,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
   for_each         = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
   function_name    = "cloud-sniper-lambda-threat-intelligence-automation"
   description      = "Cloud Sniper threat intelligence automation"
-  handler          = "cloud_sniper_threat_intelligence.security_ir"
+  handler          = "cloud_sniper_threat_intelligence.cloud_sniper_threat_intelligence"
   memory_size      = 1024
   timeout          = 300
   runtime          = "python3.6"
@@ -14,7 +14,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
     variables = {
       SQS_QUEUE_CLOUD_SNIPER      = aws_sqs_queue.cloud_sniper_sqs_queue_threat_intelligence_automation["hub"].id
       DYNAMO_TABLE_CLOUD_SNIPER   = aws_dynamodb_table.cloud_sniper_table["hub"].name
-      WEBHOOK_URL_IR              = local.webhook_slack
+      WEBHOOK_URL_CLOUD_SNIPER    = local.webhook_slack
       HUB_ACCOUNT_ID_CLOUD_SNIPER = local.hub_account_id
       ROLE_SPOKE_CLOUD_SNIPER     = local.cloud_sniper_role_spoke_threat_intelligence_automation
       BUCKET_NAME                 = aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id
