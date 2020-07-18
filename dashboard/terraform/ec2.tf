@@ -24,6 +24,8 @@ resource "aws_security_group" "access_restricted_ip" {
   name        = "access_restricted_ip"
   description = "Allow access to kibana and ssh from the current ip"
   
+  vpc_id = "${var.vpc_id}"
+
   ingress {
     cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
     from_port   = 22
@@ -36,6 +38,13 @@ resource "aws_security_group" "access_restricted_ip" {
     from_port   = 5601
     protocol    = "tcp"
     to_port     = 5601
+  }
+
+  ingress {
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+    from_port   = 9200
+    protocol    = "tcp"
+    to_port     = 9200
   }
 
   egress {
