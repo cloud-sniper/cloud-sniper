@@ -5,3 +5,7 @@ variable ssh_key_name {
 variable vpc_id {
   description = "put your vpc id for the creation of the Security Group"
 }
+
+variable bucket_name {
+  description = "put the bucketname here like 'cloudsnipper-bucket'"
+}

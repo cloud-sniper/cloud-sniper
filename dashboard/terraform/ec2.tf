@@ -63,7 +63,7 @@ resource "aws_instance" "cloudsniper_dashboard" {
   tags = local.cloud_sniper_tags
   security_groups = ["${aws_security_group.access_restricted_ip.name}"]
   key_name = "${var.ssh_key_name}"
-
+  iam_instance_profile = "${aws_iam_instance_profile.dashboard_instance_profile .name}"
   user_data = <<-EOF
         #! /bin/bash
         sudo apt-get install -y apt-transport-https ca-certificates

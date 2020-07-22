@@ -78,4 +78,4 @@ To deploy Cloud Sniper you must run:
 6.  ~/cloud-sniper/dashboard$ terraform plan
 7.  set your aws ssh-key for get access to the instance and your VPC-ID. (the EC2 access is restricted to the current public IP) 
 8.  ~/cloud-sniper/dashboard$ terraform apply [yes]
-9.  when the EC2 initialized you need to manually copy the logstash/logstash.conf file inside the '/etc/logstas/conf.d/logstash.conf' *Remember put your s3 folder name and setup with  your user/password*. 
+9.  when the EC2 initialized you need to manually copy the logstash/logstash.conf file inside the '/etc/logstash/conf.d/logstash.conf' *Remember put your s3 folder name and setup with  your user/password*. 
