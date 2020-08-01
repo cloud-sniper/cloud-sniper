@@ -16,6 +16,7 @@ HUB_ACCOUNT_ID = os.environ['HUB_ACCOUNT_ID_CLOUD_SNIPER']
 ROLE_SPOKE = os.environ['ROLE_SPOKE_CLOUD_SNIPER']
 BUCKET_NAME = os.environ['BUCKET_NAME']
 IOCS_PATH = os.environ['IOCS_PATH']
+TOPIC_ARN = os.environ['TOPIC_ARN']
 
 message = []
 json_a = []
@@ -27,6 +28,7 @@ sqs = s.client('sqs')
 iam = s.client('iam')
 r_ec2 = s.resource('ec2')
 dynamodb = s.resource('dynamodb')
+sns = s.client('sns')
 
 # spoke account
 sts_connection = boto3.client('sts')
@@ -83,8 +85,8 @@ def search_ioc():
                 if data["detail"]["type"] == dt:
                     flag = 2
                     break
-            for e in instanceDetails:
-                if data["detail"]["type"] == e:
+            for dt in instanceDetails:
+                if data["detail"]["type"] == dt:
                     flag = 3
                     break
 
@@ -269,6 +271,8 @@ def search_ioc():
                         for e in json_a:
                             if e != ioc:
                                 json_a.append(ioc)
+
+                    publish_to_sns()
 
         except Exception as e:
             log.info("JSON could not be parsed:" + str(e))
@@ -743,6 +747,7 @@ def delete_sqs():
 
 
 def put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen):
+
     log.info("Sending findings to S3 ...")
 
     dataset = {
@@ -788,6 +793,21 @@ def put_to_s3(ttp, hits, account_id, account_alias, region, subnet_id, src_ip, i
         log.info("Could not put the object to S3" + str(e))
 
 
+def publish_to_sns():
+
+    publish_object = {"Message": "TOR"}
+
+    try:
+        response = sns.publish(
+            TopicArn=TOPIC_ARN,
+            Message=json.dumps(publish_object),
+            Subject="IR"
+        )
+        log.info("Publish to SNS: " + str(response['ResponseMetadata']['HTTPStatusCode']))
+    except Exception as e:
+        log.info("Could not publish to SNS " + str(e))
+
+
 def cloud_sniper_threat_intelligence(event, context):
     global message
 
@@ -799,7 +819,7 @@ def cloud_sniper_threat_intelligence(event, context):
         if message:
             search_ioc()
             incident_and_response()
-            delete_sqs()
+            # delete_sqs()
 
             log.info("Findings properly processed")
 

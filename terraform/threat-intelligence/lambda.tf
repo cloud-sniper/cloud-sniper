@@ -19,6 +19,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
       ROLE_SPOKE_CLOUD_SNIPER     = local.cloud_sniper_role_spoke_threat_intelligence_automation
       BUCKET_NAME                 = aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id
       IOCS_PATH                   = var.cloud_sniper_iocs_path
+      TOPIC_ARN                   = aws_sns_topic.cloud_sniper_sns_topic_threat_intelligence["hub"].arn
     }
   }
 
@@ -44,4 +45,12 @@ resource "aws_lambda_function" "cloud_sniper_lambda_beaconing_detection" {
       FINDINGS_PATH      = var.cloud_sniper_beaconing_findings_path
     }
   }
+}
+
+resource "aws_lambda_permission" "cloud_sniper_permission_beaconing_detection" {
+  for_each      = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.cloud_sniper_lambda_beaconing_detection["hub"].function_name
+  principal     = "sns.amazonaws.com"
+  source_arn    = aws_sns_topic.cloud_sniper_sns_topic_threat_intelligence["hub"].arn
 }

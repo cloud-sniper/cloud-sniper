@@ -30,7 +30,7 @@ Is currently available for *AWS*, but it is to be extended to others cloud platf
 
 ### NEW deployment
 
-![alt text](images/upcoming_deployment.png "Cloud Sniper")<br> </br>
+![alt text](images/deployment.png "Cloud Sniper")<br> </br>
 
 ### Cloud Sniper released
 

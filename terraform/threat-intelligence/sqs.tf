@@ -20,7 +20,9 @@ resource "aws_sqs_queue_policy" "cloud_sniper_sqs_queue_policy_security_ir" {
       "Resource": "${aws_sqs_queue.cloud_sniper_sqs_queue_threat_intelligence_automation["hub"].arn}",
       "Condition": {
         "ArnEquals": {
-          "aws:SourceArn": "${aws_cloudwatch_event_rule.cloud_sniper_cloudwatch_event_rule_threat_intelligence_automation["hub"].arn}"
+          "aws:SourceArn": [
+            "${aws_cloudwatch_event_rule.cloud_sniper_cloudwatch_event_rule_threat_intelligence_automation["hub"].arn}"
+          ]
         }
       }
     }
