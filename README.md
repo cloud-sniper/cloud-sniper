@@ -18,13 +18,14 @@ Is currently available for *AWS*, but it is to be extended to others cloud platf
 
 ### Some cool features (terraform | python | docker | Kibana)
 
-1. AWS multi-account Incident and Response automationSecurity automation
-2. IAM activity
-3. Cloud Sniper Analytics - Enhanced lambda for C2 detection
-4. ELK integration
+1. Security automation (multi-account | multi-region)
+   1. Incident and Response automation
+   2. IAM activity
+2. Cloud Sniper Analytics - Enhanced lambda for C2 detection
+3. ELK integration
    1. Docker files
    2. Incident and Response dashboard templates
-4. Messaging integration
+4. Messaging|Alerts
    1. Slack
    2. Email
 
@@ -32,7 +33,7 @@ Is currently available for *AWS*, but it is to be extended to others cloud platf
 ### AWS deployment
 
 <div style="text-align:center"><img src="./images/deployment.png" alt="Cloud Sniper" width=800px/></div>
-<br> </br>
+
 Cloud Sniper uses [terraform](https://www.terraform.io/) to automatically deploy the entire infrastructure. The core is programmed in python, so it can be extended accordingly to any environment.
 
 The requirements include:
@@ -61,7 +62,7 @@ To deploy Cloud Sniper you should run:
 7. ~/cloud-sniper$ terraform apply [yes]
 
 
-### Dashboard  - ELK stack:
+### Dashboard  - ELK stack
 
 The dashboard presented above is an example of the Cloud Sniper UI.
 
@@ -79,22 +80,18 @@ To deploy the Cloud Sniper Dashboard, you should run:
 8.  ~/cloud-sniper/dashboard$ terraform apply [yes]
 9.  when the EC2 instance is initialized, you have to manually copy the logstash/logstash.conf file inside '/etc/logstash/conf.d/logstash.conf'. *Remember put your s3 folder name and setup with your user/password*. 
 
-# TODO: check below. Include Santi
-### Cloud Sniper releases
+### RELEASES
 
 ####  EKOLABS - EKOPARTY Security Conference 2019 (terraform | python | docker)
-1.  Automatic Incident and Response
-    1.  WAF filtering
-    2.  NACLs filtering
-    3.  IOCs knowledge database
-2.  Automatic tagging
-3.  Cloud Sniper Analytics
-4.  Beaconing detection with VPC Flow Logs
-5.  Terraform cloud-based security runbooks
-
 Authors:  
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
+
+####  Arsenal - BLACK HAT USA 2020 (terraform | python | docker | ELK)
+Authors:  
+[Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
+[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
+[Santiago Friquet - Security Automation](https://www.linkedin.com/in/santiago-friquet/)
 
 ### Contact us: <cloudsniper.cba@gmail.com>
 
