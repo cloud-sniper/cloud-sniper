@@ -21,18 +21,18 @@ Is currently available for *AWS*, but it is to be extended to others cloud platf
 1. AWS multi-account Incident and Response automationSecurity automation
 2. IAM activity
 3. Cloud Sniper Analytics - Enhanced lambda for C2 detection
-4. Kibana SIEM integration
-   1. Kubernetes deployments
-   2. Docker files
-   3. Incident and Response dashboard templates
-   4. Messaging integration
-      1. Slack
+4. ELK integration
+   1. Docker files
+   2. Incident and Response dashboard templates
+4. Messaging integration
+   1. Slack
+   2. Email
 
 
 ### AWS deployment
 
 <div style="text-align:center"><img src="./images/deployment.png" alt="Cloud Sniper" width=800px/></div>
-
+<br> </br>
 Cloud Sniper uses [terraform](https://www.terraform.io/) to automatically deploy the entire infrastructure. The core is programmed in python, so it can be extended accordingly to any environment.
 
 The requirements include:
@@ -60,24 +60,8 @@ To deploy Cloud Sniper you should run:
 6. ~/cloud-sniper$ terraform plan
 7. ~/cloud-sniper$ terraform apply [yes]
 
-### AWS artifacts integration:
 
-The platform is integrated with the following AWS cloud resources:
-
-1. GuardDuty
-2. SQS
-3. CloudWatch
-4. Lambda
-5. EC2
-6. VPC Flow Logs
-7. DynamoDB
-8. IAM
-9. S3
-10. CloudTrail
-11. WAF
-12. Kinesis Firehose
-
-### Dashboard  - ELK:
+### Dashboard  - ELK stack:
 
 The dashboard presented above is an example of the Cloud Sniper UI.
 
