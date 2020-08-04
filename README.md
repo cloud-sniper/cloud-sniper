@@ -1,6 +1,7 @@
 
 <div style="text-align:center"><img src="./images/dashboard.png" alt="Cloud Sniper" width=800px/></div>
-<br> </br>
+
+
 ## *Cloud Security Operations*
 
 ### *What is Cloud Sniper?*
