@@ -90,7 +90,7 @@ Authors:
 ####  Arsenal - BLACK HAT USA 2020 (terraform | python | docker | ELK)
 Authors:  
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
-[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
+[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)  
 [Santiago Friquet - Security Automation](https://www.linkedin.com/in/santiago-friquet/)
 
 ### Contact us: <cloudsniper.cba@gmail.com>
