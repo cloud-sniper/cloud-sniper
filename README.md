@@ -1,6 +1,5 @@
 
 <div style="text-align:center"><img src="./images/dashboard.png" alt="Cloud Sniper" width=800px/></div>
-
 <br> </br>
 ## *Cloud Security Operations*
 
@@ -87,7 +86,7 @@ Authors:
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
-####  Arsenal - BLACK HAT USA 2020 (terraform | python | docker | ELK)
+####  ARSENAL - BLACK HAT USA 2020 (terraform | python | docker | ELK)
 Authors:  
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)  
