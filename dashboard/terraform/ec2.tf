@@ -19,12 +19,11 @@ data "http" "myip" {
   url = "http://ipv4.icanhazip.com"
 }
 
-
 resource "aws_security_group" "access_restricted_ip" {
   name        = "access_restricted_ip"
   description = "Allow access to kibana and ssh from the current ip"
   
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 
   ingress {
     cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
@@ -55,26 +54,27 @@ resource "aws_security_group" "access_restricted_ip" {
   }
 
   tags = local.cloud_sniper_tags
+
 }
 
 resource "aws_instance" "cloudsniper_dashboard" {
-  ami           = "${data.aws_ami.ubuntu.id}"
+  ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
-  subnet_id = "${var.subnet_id}"
+  subnet_id = var.subnet_id
   tags = local.cloud_sniper_tags
   vpc_security_group_ids = ["${aws_security_group.access_restricted_ip.id}"]
-  key_name = "${var.ssh_key_name}"
-  iam_instance_profile = "${aws_iam_instance_profile.dashboard_instance_profile .name}"
+  key_name = var.ssh_key_name
+  iam_instance_profile = aws_iam_instance_profile.dashboard_instance_profile.name
   
   user_data = <<-EOF
         #! /bin/bash
         sudo apt-get install -y apt-transport-https ca-certificates
         sudo add-apt-repository ppa:openjdk-r/ppa
         sudo apt-get update
-        sudo apt install -y openjdk-11-jdk unzip
+        sudo apt install -y openjdk-11-jdk unzip default-jre default-jdk
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
         wget -qO - https://d3g5vo6xdbdb9a.cloudfront.net/GPG-KEY-opendistroforelasticsearch | sudo apt-key add -
-        echo "deb https://d3g5vo6xdbdb9a.cloudfront.net/apt stable main" | sudo tee -a   /etc/apt/sources.list.d/opendistroforelasticsearch.list
+        echo "deb https://d3g5vo6xdbdb9a.cloudfront.net/apt stable main" | sudo tee -a /etc/apt/sources.list.d/opendistroforelasticsearch.list
         wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-7.8.0-amd64.deb
         echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
         sudo dpkg -i elasticsearch-oss-7.8.0-amd64.deb
@@ -86,5 +86,4 @@ resource "aws_instance" "cloudsniper_dashboard" {
         sudo systemctl start kibana.service
         sudo apt install -y logstash
     EOF
-
 }
