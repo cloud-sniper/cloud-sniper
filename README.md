@@ -31,7 +31,7 @@ Is currently available for *AWS*, but it is to be extended to others cloud platf
 
 ### AWS deployment
 
-<div style="text-align:center"><img src="./images/upcoming_deployment.png" alt="Cloud Sniper" width=800px/></div>
+<div style="text-align:center"><img src="./images/deployment.png" alt="Cloud Sniper" width=800px/></div>
 
 Cloud Sniper uses [terraform](https://www.terraform.io/) to automatically deploy the entire infrastructure. The core is programmed in python, so it can be extended accordingly to any environment.
 

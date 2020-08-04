@@ -89,6 +89,18 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
     effect = "Allow"
 
     actions = [
+      "sns:Publish",
+    ]
+
+    resources = [
+      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${aws_sns_topic.cloud_sniper_sns_topic_threat_intelligence["hub"].name}",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
       "sts:AssumeRole",
     ]
 
@@ -184,9 +196,22 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_beaconing_detection
     effect = "Allow"
 
     actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+
+    resources = [
+      "arn:aws:logs:*:*:*",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
       "s3:GetObject",
       "s3:PutObject",
-      "s3:GetObject",
     ]
 
     resources = [
