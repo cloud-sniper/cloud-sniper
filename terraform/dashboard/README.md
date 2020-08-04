@@ -19,4 +19,4 @@ To deploy the full Cloud Sniper Dashboard stack, you should run:
 8.  ~/cloud-sniper/dashboard$ terraform apply [yes]
 9.  when the EC2 instance is initialized, you have to manually copy the /dashboard/logstash/logstash.conf file inside '/etc/logstash/conf.d/logstash.conf'. *Remember put your s3 folder name and setup with your user/password*. 
 
-![alt text](../images/dashboard.gif)
+![alt text](../../images/gif/dashboard.gif)
