@@ -61,7 +61,10 @@ Authors:
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)  
 [Santiago Friquet - Security Automation](https://www.linkedin.com/in/santiago-friquet/)
 
-### Contact us: <cloudsniper.cba@gmail.com>
+### Contact us:
+
+#### [EMAIL](mailto:cloudsniper.cba@gmail.com) 
+#### [SLACK](https://join.slack.com/t/cloudsniper/shared_invite/zt-gdto90pu-C25tsP54IOqTZd8ykQHmTw)
 
 ### LEGAL
 This project is licensed under the terms of the MIT license.
