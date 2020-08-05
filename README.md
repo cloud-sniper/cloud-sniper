@@ -15,7 +15,7 @@ The system is currently available for *AWS*, but it is to be extended to others 
 
 ### Some cool features (terraform | python | docker | Kibana)
 
-1. Security automation (multi-account | multi-region)
+1. Security automation (multi-account|multi-region)
    1. Incident and Response automation
    2. IAM activity
 2. Cloud Sniper Analytics
