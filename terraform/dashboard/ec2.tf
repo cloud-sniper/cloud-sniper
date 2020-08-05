@@ -22,7 +22,7 @@ data "http" "myip" {
 resource "aws_security_group" "access_restricted_ip" {
   name        = "access_restricted_ip"
   description = "Allow access to kibana and ssh from the current ip"
-  
+
   vpc_id = var.vpc_id
 
   ingress {
@@ -58,14 +58,14 @@ resource "aws_security_group" "access_restricted_ip" {
 }
 
 resource "aws_instance" "cloudsniper_dashboard" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.medium"
-  subnet_id = var.subnet_id
-  tags = local.cloud_sniper_tags
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.medium"
+  subnet_id              = var.subnet_id
+  tags                   = local.cloud_sniper_tags
   vpc_security_group_ids = ["${aws_security_group.access_restricted_ip.id}"]
-  key_name = var.ssh_key_name
-  iam_instance_profile = aws_iam_instance_profile.dashboard_instance_profile.name
-  
+  key_name               = var.ssh_key_name
+  iam_instance_profile   = aws_iam_instance_profile.dashboard_instance_profile.name
+
   user_data = <<-EOF
         #! /bin/bash
         sudo apt-get install -y apt-transport-https ca-certificates

@@ -5,9 +5,9 @@ resource "aws_iam_role" "dashboard_cloud_sniper_role" {
 }
 
 resource "aws_iam_role_policy" "cloudsniper_policy_dashboard" {
-  name     = "cloudsniper-policy-dashboard"
-  role     = aws_iam_role.dashboard_cloud_sniper_role.id
-  policy   = data.aws_iam_policy_document.dashboard_s3_access_policy_document.json
+  name   = "cloudsniper-policy-dashboard"
+  role   = aws_iam_role.dashboard_cloud_sniper_role.id
+  policy = data.aws_iam_policy_document.dashboard_s3_access_policy_document.json
 }
 
 
