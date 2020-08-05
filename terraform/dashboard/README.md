@@ -1,6 +1,6 @@
 ![alt text](../../images/logo.png "Cloud Sniper")
 <br> </br>
-## *Cloud Sniper Dashboard module*
+## *Cloud Sniper Dashboard stack*
 
 
 ***Cloud Sniper*** introduces the ability to monitor security in cloud environments by adding telemetry, providing metrics and alerts based on the information collected.
@@ -23,6 +23,5 @@ To deploy the Cloud Sniper dashboard stack, you should run:
 1. Access to EC2 is restricted to your current public IP
 2. When initializing the EC2 instance, the file /dashboard/logstash/logstash.conf' must be copied manually into '/etc/logstash/conf.d/logstash.conf'
 
+<br> </br>
 ![alt text](../../images/gif/dashboard.gif)
-
-

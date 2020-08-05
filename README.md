@@ -21,27 +21,41 @@ Is currently available for *AWS*, but it is to be extended to others cloud platf
 1. Security automation (multi-account | multi-region)
    1. Incident and Response automation
    2. IAM activity
-2. Cloud Sniper Analytics - Enhanced lambda for C2 detection
-3. ELK integration
-   1. Docker files
+2. Cloud Sniper Analytics
+   1. Enhanced lambda for C2 detection
+3. ELK
+   1. Incident and Response pipeline
    2. Incident and Response dashboard templates
 4. Messaging|Alerts
    1. Slack
    2. Email
 
 
-### AWS deployment
+### AWS terraform deployment
 
 <div style="text-align:center"><img src="./images/deployment.png" alt="Cloud Sniper" width=800px/></div>
 
-### RELEASES
+### Upcoming features
 
-####  EKOLABS - EKOPARTY 2019 (terraform | python | docker)
+1. Security automation
+   1. Dangling DNS records automation
+   2. Open|orphans security groups automation
+2. Cloud Sniper Analytics
+   1. CloudTrail IAM analytics
+3. ELK
+   1. Cloud Sniper Kibana application
+   2. New security dashboards
+   3. Open Distro alerting
+
+
+### Releases
+
+#####  EKOLABS - EKOPARTY 2019 (terraform | python | docker)
 Authors:  
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
 
-####  ARSENAL - BLACK HAT USA 2020 (terraform | python | docker | ELK)
+#####  ARSENAL - BLACK HAT USA 2020 (terraform | python | docker | ELK)
 Authors:  
 [Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
 [Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)  
