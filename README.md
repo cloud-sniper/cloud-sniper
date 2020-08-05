@@ -1,4 +1,3 @@
-
 <div style="text-align:center"><img src="./images/dashboard.png" alt="Cloud Sniper" width=800px/></div>
 
 
@@ -70,4 +69,3 @@ If you wish to support this project you can donate bitcoins (BTC) here: 14WRfmMh
 ### Legal
 
 This project is licensed under the terms of the MIT license.
-
