@@ -1,3 +1,5 @@
+![alt text](../../images/logo.png "Cloud Sniper")
+<br> </br>
 ## *Cloud Sniper Beaconing detection*
 
 In order to detect the periodicity in VPC Flow logs packages, we made an adaptation of the `signal-processing` module, part of the project [Signal-Processing](https://github.com/geofizx/Signal-Processing). This other project is also released under a MIT license.
