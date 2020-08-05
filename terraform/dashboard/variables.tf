@@ -1,16 +1,16 @@
 variable ssh_key_name {
-  description = "Name of the key-pair on EC2 (security-pem, aws-instance-access-pem, etc)"
+  description = "key pair name to be used in the EC2 instance"
 }
 
 variable vpc_id {
-  description = "put your vpc id for the creation of the Security Group"
+  description = "VPC id for the creation of the Security Group"
 }
 
 variable bucket_name {
-  description = "put the bucketname here like 'cloudsnipper-bucket'"
+  description = "Bucket name"
 }
 
 variable subnet_id {
-  description = "subnet for ec2"
+  description = "Subnet for EC2 instance"
 }
 
