@@ -4,7 +4,7 @@ In order to detect the periodicity in VPC Flow logs packages, we made an adaptat
 
 To detect beaconing, we make use of Fourier transforms to detect candidates and then we filter possible false positives from those candidates. The main problem that, due to the nature of VPC Flow logs and the way how data is cached and dumped, the time series obtained for each set of communications between two endpoints is very noisy.
 
-The following dependencies should be added to your lambda:
+Currently, the lambda zip package is available under the `target` folder. The following dependencies are included in the lambda package:
 * numpy
 * scipy
 * ipaddress

@@ -4,8 +4,6 @@
 
 ## *Cloud Security Operations*
 
-### *What is Cloud Sniper?*
-
 ***Cloud Sniper*** is a platform designed to manage Cloud Security Operations, intended to respond to security incidents by accurately analyzing and correlating cloud artifacts. It is meant to be used as a *Cloud Security Operations* platform to detect and remediate security incidents by showing a complete visibility of the company's cloud security posture.
 
 We are presenting a centralized Incident and Response platform, which executes automatic actions, by learning from the analysts' expert knowledge. To do it, only native cloud artifacts and open source technologies are implemented. In this way, the community can extend the project with different security use cases.
@@ -14,7 +12,7 @@ We are presenting a centralized Incident and Response platform, which executes a
 
 With this platform, you get a complete and comprehensive management system of the security incidents. At the same time, an advanced security analyst can integrate Cloud Sniper with external forensic or incident-and-response tools to ingest new security feeds. The platform automatically deploys and provides cloud-based integration with all native resources, in a fully modularized manner, making it very easy to extend for the community.
 
-Is currently available for *AWS*, but it is to be extended to others cloud platforms.
+The system is currently available for *AWS*, but it is to be extended to others cloud platforms.
 
 ### Some cool features (terraform | python | docker | Kibana)
 
@@ -63,6 +61,13 @@ Authors:
 
 ### Contact us: [EMAIL](mailto:cloudsniper.cba@gmail.com) - [SLACK](https://join.slack.com/t/cloudsniper/shared_invite/zt-gdto90pu-C25tsP54IOqTZd8ykQHmTw)
 
-### LEGAL
+
+### Donations
+
+If you wish to support this project you can donate bitcoins (BTC) here: 14WRfmMhQS5auzFAhzfaBW9niqy1QF3Pdw
+
+
+### Legal
+
 This project is licensed under the terms of the MIT license.
 
