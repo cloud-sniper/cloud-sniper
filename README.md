@@ -1,19 +1,17 @@
 <div style="text-align:center"><img src="./images/dashboard.png" alt="Cloud Sniper" width=800px/></div>
 
 
-## *Cloud Security Operations*
+# *Cloud Security Operations*
 
-***Cloud Sniper*** is a platform designed to manage Cloud Security Operations, intended to respond to security incidents by accurately analyzing and correlating cloud artifacts. It is meant to be used as a *Cloud Security Operations* platform to detect and remediate security incidents by showing a complete visibility of the company's cloud security posture.
+***Cloud Sniper*** is a detection-as-a-code platform designed to manage Cloud Security Operations, intended to respond to security incidents by accurately analyzing and correlating cloud artifacts. It is meant to be used as a *detection-as-a-code platform* to detect and remediate security incidents by showing a complete visibility of the company's cloud security posture.
 
-We are presenting a centralized Incident and Response platform, which executes automatic actions, by learning from the analysts' expert knowledge. To do it, only native cloud artifacts and open source technologies are implemented. In this way, the community can extend the project with different security use cases.
+Cloudsniper join native cloud artifacts and open source technologies with automation to easily response and remediate security issues/incidentes. We remaint to be an opensource platforn to allow the community can extend the project with different security use cases.
 
-***Cloud Sniper*** receives and processes security feeds, providing an automatic response mechanism to protect the cloud infrastructure. To detect attackers' advanced *TTPs*, ***Cloud Sniper Analytics*** module correlates IOCs providing enhanced security findings to the security analyst.
-
-With this platform, you get a complete and comprehensive management system of the security incidents. At the same time, an advanced security analyst can integrate Cloud Sniper with external forensic or incident-and-response tools to ingest new security feeds. The platform automatically deploys and provides cloud-based integration with all native resources, in a fully modularized manner, making it very easy to extend for the community.
+With cloudsniper, you get a complete and comprehensive management system of the security incidents. At the same time, an advanced security analyst can integrate Cloud Sniper with external forensic or incident-and-response tools to ingest new security feeds. The platform automatically deploys and provides cloud-based integration with all native resources using terraform (in a fully modularized manner) making it very easy to extend for the community.
 
 The system is currently available for *AWS*, but it is to be extended to others cloud platforms.
 
-### Some cool features (terraform | python | docker | Kibana)
+## Some cool features (terraform | python | docker | kibana)
 
 1. Security automation (multi-account|multi-region)
    1. Incident and Response automation
@@ -27,12 +25,69 @@ The system is currently available for *AWS*, but it is to be extended to others 
    1. Slack
    2. Email
 
+# Getting Started
 
-### AWS terraform deployment
+Here should be an fast way to getting started with the project no more that 5 steps. 
 
-<div style="text-align:center"><img src="./images/deployment.png" alt="Cloud Sniper" width=800px/></div>
+## AWS terraform deployment
 
-### Upcoming features
+To deploy Cloud Sniper you should run:
+
+1. ~$ git clone https://github.com/cloud-sniper/cloud-sniper.git
+2. ~$ cd cloud-sniper/terraform/[stack-name]
+3. Set the corresponding environment variables in the variables.tf file
+4. Create main.tf file with your credentials or use your role as appropriate
+
+```
+   provider "aws" {
+    region                    = "region"
+    shared_credentials_file   = "/your-home/.aws/credentials"
+    profile                   = "your-profile"
+   }
+```
+5. ~/[stack-name]$ terraform init
+6. ~/[stack-name]$ terraform plan
+7. ~/[stack-name]$ terraform apply [yes]
+
+## Features
+### Analytics
+this is a cool ml feature to run using vpc logs and detect beconing to an C2C bla bla bla
+
+### IAM
+How many user garbage do you have into your account? is safe to delete? use this option the get this into your slack/email and nuke unnesesary user into your AWS accounts automatically. 
+
+### Threat-Intelligence
+Stop real threat using guarduty-finding & threatIntelligence to automatically block connection to exposed vulnerable services using NCAL's. 
+
+### Dashboard
+Send those reports that nobody reads and forget the boring ppts to the manager, cloudsniper take care of those indicators and visualizations. 
+
+### Dagobah
+What is this? who owners those EC2? how many instances I have? use dagobah to collect information get a picture of your resources and be aware of your compliance risk. 
+
+### SG-Cleanner
+Clean those unnesesary security groups open into your account and not in use, and prevent to expose services to internet. 
+
+# Community Discussions
+
+Join to our [SLACK](https://join.slack.com/t/cloudsniper/shared_invite/zt-gdto90pu-C25tsP54IOqTZd8ykQHmTw) community to contributed, get in touch or just say "Hi".
+
+# Donations
+
+If you wish to support this project you can donate bitcoins (BTC) here: 14WRfmMhQS5auzFAhzfaBW9niqy1QF3Pdw
+
+# Legal
+
+This project is licensed under the terms of the MIT license.
+
+# Updates
+News and updates are regularly posted here under #[Feeds](https://github.com/cloud-sniper/cloud-sniper#feeds).
+
+# Feeds
+
+-. 020-10-26 - New documentation release
+
+# Upcoming features
 
 1. Security automation
    1. Dangling DNS records automation
@@ -44,28 +99,8 @@ The system is currently available for *AWS*, but it is to be extended to others 
    2. New security dashboards
    3. Open Distro alerting
 
+# Contributing
 
-### Releases
-
-#####  EKOLABS - EKOPARTY 2019 (terraform | python | docker)
-Authors:  
-[Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
-[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
-
-#####  ARSENAL - BLACK HAT USA 2020 (terraform | python | docker | ELK)
-Authors:  
-[Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
-[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)  
-[Santiago Friquet - Security Automation](https://www.linkedin.com/in/santiago-friquet/)
-
-### Contact us: [EMAIL](mailto:cloudsniper.cba@gmail.com) - [SLACK](https://join.slack.com/t/cloudsniper/shared_invite/zt-gdto90pu-C25tsP54IOqTZd8ykQHmTw)
-
-
-### Donations
-
-If you wish to support this project you can donate bitcoins (BTC) here: 14WRfmMhQS5auzFAhzfaBW9niqy1QF3Pdw
-
-
-### Legal
-
-This project is licensed under the terms of the MIT license.
+-. Please see our [Code of conduct](code_of_conduct.md). 
+-. We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests via [pull request](https://github.com/cloud-sniper/cloud-sniper/pulls).
+-. Report any issue with[issues](https://github.com/cloud-sniper/cloud-sniper/issues)
