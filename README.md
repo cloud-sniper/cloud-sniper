@@ -28,7 +28,6 @@ The system is currently available for *AWS*, but it is to be extended to others 
 # Getting Started
 
 Here should be an fast way to getting started with the project no more that 5 steps. 
-
 ## AWS terraform deployment
 
 To deploy Cloud Sniper you should run:
@@ -50,22 +49,22 @@ To deploy Cloud Sniper you should run:
 7. ~/[stack-name]$ terraform apply [yes]
 
 ## Features
-### Analytics
+#### Analytics
 this is a cool ml feature to run using vpc logs and detect beconing to an C2C bla bla bla
 
-### IAM
+#### IAM
 How many user garbage do you have into your account? is safe to delete? use this option the get this into your slack/email and nuke unnesesary user into your AWS accounts automatically. 
 
-### Threat-Intelligence
+#### Threat-Intelligence
 Stop real threat using guarduty-finding & threatIntelligence to automatically block connection to exposed vulnerable services using NCAL's. 
 
-### Dashboard
+#### Dashboard
 Send those reports that nobody reads and forget the boring ppts to the manager, cloudsniper take care of those indicators and visualizations. 
 
-### Dagobah
+#### Dagobah
 What is this? who owners those EC2? how many instances I have? use dagobah to collect information get a picture of your resources and be aware of your compliance risk. 
 
-### SG-Cleanner
+#### SG-Cleanner
 Clean those unnesesary security groups open into your account and not in use, and prevent to expose services to internet. 
 
 # Community Discussions
