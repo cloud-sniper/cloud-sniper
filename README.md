@@ -81,11 +81,7 @@ If you wish to support this project you can donate bitcoins (BTC) here: 14WRfmMh
 This project is licensed under the terms of the MIT license.
 
 # Updates
-News and updates are regularly posted here under #[Feeds](https://github.com/cloud-sniper/cloud-sniper#feeds).
-
-# Feeds
-
--. 020-10-26 - New documentation release
+News and updates are regularly posted into the repo under [Releases](https://github.com/cloud-sniper/cloud-sniper/releases).
 
 # Upcoming features
 
