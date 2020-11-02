@@ -1,5 +1,5 @@
-<div style="text-align:center"><img src="./images/dashboard.png" alt="Cloud Sniper" width=800px/></div>
 
+![alt text](./images/logo.png "Cloud Sniper")
 
 # *Cloud Security Operations*
 
@@ -8,6 +8,8 @@
 Cloudsniper join native cloud artifacts and open source technologies with automation to easily response and remediate security issues/incidentes. We remaint to be an opensource platforn to allow the community can extend the project with different security use cases.
 
 With cloudsniper, you get a complete and comprehensive management system of the security incidents. At the same time, an advanced security analyst can integrate Cloud Sniper with external forensic or incident-and-response tools to ingest new security feeds. The platform automatically deploys and provides cloud-based integration with all native resources using terraform (in a fully modularized manner) making it very easy to extend for the community.
+
+<div style="text-align:center"><img src="./images/dashboard.png" alt="Cloud Sniper" width=800px/></div>
 
 The system is currently available for *AWS*, but it is to be extended to others cloud platforms.
 
