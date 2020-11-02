@@ -29,7 +29,10 @@ The system is currently available for *AWS*, but it is to be extended to others 
 
 # Getting Started
 
-Here should be an fast way to getting started with the project no more that 5 steps. 
+Here should be an fast way to getting started with the project no more that 5 steps.
+
+
+
 ## AWS terraform deployment
 
 To deploy Cloud Sniper you should run:
@@ -98,6 +101,6 @@ News and updates are regularly posted into the repo under [Releases](https://git
 
 # Contributing
 
--. Please see our [Code of conduct](code_of_conduct.md). 
--. We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests via [pull request](https://github.com/cloud-sniper/cloud-sniper/pulls).
--. Report any issue with[issues](https://github.com/cloud-sniper/cloud-sniper/issues)
+- Please see our [Code of conduct](code_of_conduct.md). 
+- We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests via [pull request](https://github.com/cloud-sniper/cloud-sniper/pulls).
+- Report any issue [here](https://github.com/cloud-sniper/cloud-sniper/issues).
