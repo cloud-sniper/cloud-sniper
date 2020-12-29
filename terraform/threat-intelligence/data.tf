@@ -81,7 +81,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
     ]
 
     resources = [
-      "arn:aws:sqs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${aws_sqs_queue.cloud_sniper_sqs_queue_threat_intelligence_automation["hub"].name}",
+      "arn:aws:sqs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${join("-", ["cloud-sniper-sqs-queue-threat-intelligence-automation", data.aws_region.current.name])}",
     ]
   }
 
@@ -130,7 +130,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}",
+      "arn:aws:s3:::${join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])}",
     ]
   }
 
@@ -144,7 +144,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}/*",
+      "arn:aws:s3:::${join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])}",
     ]
   }
 }
