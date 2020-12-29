@@ -17,7 +17,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
       WEBHOOK_URL_CLOUD_SNIPER    = local.webhook_slack
       HUB_ACCOUNT_ID_CLOUD_SNIPER = local.hub_account_id
       ROLE_SPOKE_CLOUD_SNIPER     = local.cloud_sniper_role_spoke_threat_intelligence_automation
-      BUCKET_NAME                 = aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id
+      BUCKET_NAME                 = join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])
       IOCS_PATH                   = var.cloud_sniper_iocs_path
       TOPIC_ARN                   = aws_sns_topic.cloud_sniper_sns_topic_threat_intelligence["hub"].arn
     }
@@ -40,7 +40,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_beaconing_detection" {
 
   environment {
     variables = {
-      BUCKET_NAME        = aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id
+      BUCKET_NAME        = join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])
       VPC_FLOW_LOGS_PATH = var.cloud_sniper_beaconing_flows_path
       FINDINGS_PATH      = var.cloud_sniper_beaconing_findings_path
     }

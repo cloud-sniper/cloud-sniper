@@ -819,7 +819,7 @@ def cloud_sniper_threat_intelligence(event, context):
         if message:
             search_ioc()
             incident_and_response()
-            # delete_sqs()
+            delete_sqs()
 
             log.info("Findings properly processed")
 

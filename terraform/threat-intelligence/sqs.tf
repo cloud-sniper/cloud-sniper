@@ -1,6 +1,6 @@
 resource "aws_sqs_queue" "cloud_sniper_sqs_queue_threat_intelligence_automation" {
   for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
-  name     = "cloud-sniper-sqs-queue-threat-intelligence-automation"
+  name     = join("-", ["cloud-sniper-sqs-queue-threat-intelligence-automation", data.aws_region.current.name])
 
   tags = local.cloud_sniper_tags
 }
