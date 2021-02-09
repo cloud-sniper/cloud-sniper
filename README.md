@@ -15,13 +15,13 @@ The system is currently available for *AWS*, but it is to be extended to others 
 
 ### Features
 
-1. Incident and Response automation (multi-account|multi-region)
+1. Incident and Response orchestration (multi-account|multi-region)
 2. Security analytics
 3. Incident and Response dashboards
 4. Alerting
-5. Kubernetes deployments
-6. SIRAS (Automated security incident response simulations)
-7. Dagobah (Threat information, inventory and cloud artifact compliance data)
+5. Kubernetes deployment
+6. [SIRAS](https://github.com/cloud-sniper/siras) (Automated security incident response simulations)
+7. [Dagobah](https://github.com/cloud-sniper/dagobah) (Threat information, inventory and cloud artifact compliance data)
 
 ### Usage
 
