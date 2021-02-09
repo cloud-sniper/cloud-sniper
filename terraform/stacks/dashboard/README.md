@@ -1,4 +1,4 @@
-![alt text](../../images/logo.png "Cloud Sniper")
+![alt text](../../../images/logo.png "Cloud Sniper")
 <br> </br>
 ## *Cloud Sniper Dashboard stack*
 
