@@ -4,9 +4,9 @@
 ### AWS terraform deployment
 
 <div style="text-align:center"><img src="../images/deployment.png" alt="Cloud Sniper" width=800px/></div>
+<br> </br>
 
 ***Cloud Sniper*** uses [terraform](https://www.terraform.io/) to automatically deploy the entire infrastructure. Each functionality will be added in terraform stacks format. A stack has a holistic approach, which does not generate dependencies with another stack and can be added 100% to a deployment plan just by filling in the necessary input variables.
-<br> </br>
 
 The requirements include:
 
