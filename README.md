@@ -13,59 +13,42 @@ With this platform, you get a complete and comprehensive management system of th
 
 The system is currently available for *AWS*, but it is to be extended to others cloud platforms.
 
-### Some cool features (terraform | python | docker | Kibana)
+### Features
 
-1. Security automation (multi-account|multi-region)
-   1. Incident and Response automation
-   2. IAM activity
-2. Cloud Sniper Analytics
-   1. Enhanced lambda for C2 detection
-3. ELK
-   1. Incident and Response pipeline
-   2. Incident and Response dashboard templates
-4. Messaging|Alerts
-   1. Slack
-   2. Email
+1. Incident and Response orchestration (multi-account|multi-region)
+2. Security analytics
+3. Incident and Response dashboards
+4. Alerting
+5. Kubernetes deployment
+6. [SIRAS](https://github.com/cloud-sniper/siras) (Automated security incident response simulations)
+7. [Dagobah](https://github.com/cloud-sniper/dagobah) (Threat information, inventory and cloud artifact compliance data)
 
+### Usage
 
-### AWS terraform deployment
+* [Terraform deployment](https://github.com/cloud-sniper/cloud-sniper/tree/master/terraform)
 
-<div style="text-align:center"><img src="./images/deployment.png" alt="Cloud Sniper" width=800px/></div>
+### Get Involved
+* [EMAIL](mailto:cloudsniper.cba@gmail.com)
+* [SLACK](https://join.slack.com/t/cloudsniper/shared_invite/zt-gdto90pu-C25tsP54IOqTZd8ykQHmTw)
 
-### Upcoming features
+### Contributing
+We welcome all contributions, suggestions, and feedback, so please do not hesitate to reach out. 
 
-1. Security automation
-   1. Dangling DNS records automation
-   2. Open|orphans security groups automation
-2. Cloud Sniper Analytics
-   1. CloudTrail IAM analytics
-3. ELK
-   1. Cloud Sniper Kibana application
-   2. New security dashboards
-   3. Open Distro alerting
+Ways you can contribute:
+1. Report potential bugs 
+2. Request a feature
+3. Join our community
+4. Submit a PR for open issues
+5. Fix or improve documentation
 
 
 ### Releases
 
-#####  EKOLABS - EKOPARTY 2019 (terraform | python | docker)
-Authors:  
-[Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
-[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)
+* EKOLABS - EKOPARTY 2019
+* ARSENAL - BLACK HAT USA 2020
 
-#####  ARSENAL - BLACK HAT USA 2020 (terraform | python | docker | ELK)
-Authors:  
-[Nicolás Rivero Corvalán - Security Automation](https://www.linkedin.com/in/riveronicolas/)  
-[Matías Marenchino - Security Analytics](https://www.linkedin.com/in/mlmarenchino/)  
-[Santiago Friquet - Security Automation](https://www.linkedin.com/in/santiago-friquet/)
+### Code of Conduct
 
-### Contact us: [EMAIL](mailto:cloudsniper.cba@gmail.com) - [SLACK](https://join.slack.com/t/cloudsniper/shared_invite/zt-gdto90pu-C25tsP54IOqTZd8ykQHmTw)
+This project adheres to the Linux Foundation [Code of Conduct](https://events.linuxfoundation.org/about/code-of-conduct/) available on the event page. By participating, you are expected to honor this code.
 
 
-### Donations
-
-If you wish to support this project you can donate bitcoins (BTC) here: 14WRfmMhQS5auzFAhzfaBW9niqy1QF3Pdw
-
-
-### Legal
-
-This project is licensed under the terms of the MIT license.
