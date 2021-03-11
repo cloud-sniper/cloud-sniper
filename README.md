@@ -20,8 +20,8 @@ The system is currently available for *AWS*, but it is to be extended to others 
 3. Incident and Response dashboards
 4. Alerting
 5. Kubernetes deployment
-6. [SIRAS](https://github.com/cloud-sniper/siras) (Automated security incident response simulations)
-7. [Dagobah](https://github.com/cloud-sniper/dagobah) (Threat information, inventory and cloud artifact compliance data)
+6. [DROID](https://github.com/cloud-sniper/cloud-droid) (Incident and Response Simulations)
+7. [LUSAT](https://github.com/cloud-sniper/cloud-lusat) (Internal Threat Intelligence Feeds, Inventory and Compliance Data Collection)
 
 ### Usage
 
@@ -46,6 +46,7 @@ Ways you can contribute:
 
 * EKOLABS - EKOPARTY 2019
 * ARSENAL - BLACK HAT USA 2020
+* ARSENAL - BLACK HAT ASIA - 2021 (Upcoming release)
 
 ### Code of Conduct
 
