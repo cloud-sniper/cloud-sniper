@@ -18,7 +18,7 @@ The requirements include:
 To deploy Cloud Sniper you should run:
 
 1. ~$ git clone https://github.com/cloud-sniper/cloud-sniper.git
-2. ~$ cd cloud-sniper/terraform/[stack-name]
+2. ~$ cd cloud-sniper/terraform/stacks/[stack-name]
 3. Set the corresponding environment variables in the variables.tf file
 4. Create main.tf file with your credentials or use your role as appropriate
 
