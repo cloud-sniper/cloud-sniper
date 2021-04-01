@@ -11,6 +11,6 @@ locals {
   }
 
   # Customize
-  hub_account_id = "343147215622"
-  webhook_slack  = "https://hooks.slack.com/services/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"
+  hub_account_id = "xxxxxx"
+  webhook_slack  = "https://hooks.slack.com/services/xxxxxx"
 }
