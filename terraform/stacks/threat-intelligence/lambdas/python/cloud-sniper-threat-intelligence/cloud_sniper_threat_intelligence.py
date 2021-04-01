@@ -780,7 +780,7 @@ def message_to_slack(ioc):
         if ioc_len == 20:
 
             ttp, hits, account_id, account_alias, region, subnet_id, src_ip, instance_id, nacl_id, country, city, asn_org, org, isp, asn, vpc_id, sg_name, sg_id, tags, event_first_seen = ioc.split(",")
-            nacl_url = "https://console.aws.amazon.com/vpc/home?region=us-east-1#acls:networkAclId=" + nacl_id + ";sort=networkAclId"
+            nacl_url = "https://console.aws.amazon.com/vpc/home?region=" + region + "#acls:networkAclId=" + nacl_id + ";sort=networkAclId"
 
             data = {
                 'text': '***************************************************************\n\n'
