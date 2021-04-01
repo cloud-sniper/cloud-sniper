@@ -3,6 +3,8 @@
 .idea
 .terraform
 main.tf
+remote_backend.tf
+locals.tf
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup

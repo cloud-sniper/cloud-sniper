@@ -144,7 +144,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence
     ]
 
     resources = [
-      "arn:aws:s3:::${join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])}",
+      "arn:aws:s3:::${join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])}/*",
     ]
   }
 }
