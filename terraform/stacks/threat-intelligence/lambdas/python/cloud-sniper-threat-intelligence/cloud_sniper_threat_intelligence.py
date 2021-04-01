@@ -320,13 +320,7 @@ def search_ioc():
                 account_alias = str(get_account_alias(account_id))
                 event_first_seen = str(data["detail"]["service"]["eventFirstSeen"])
 
-                subnet_id = ""
-                instance_id = ""
-                nacl_id = ""
-                vpc_id = ""
-                sg_name = ""
-                sg_id = ""
-                tags = ""
+                subnet_id = instance_id = nacl_id = vpc_id = sg_name = sg_id = tags = ""
                 principal_id = data["detail"]["resource"]["accessKeyDetails"]["principalId"]
                 user_name = data["detail"]["resource"]["accessKeyDetails"]["userName"]
 
