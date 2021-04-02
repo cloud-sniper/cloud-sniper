@@ -81,7 +81,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_iam_automation" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.cloud_sniper_data_store}",
+      "arn:aws:s3:::${local.cloud_sniper_data_store}",
     ]
   }
 
@@ -94,7 +94,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_iam_automation" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.cloud_sniper_data_store}/*",
+      "arn:aws:s3:::${local.cloud_sniper_data_store}/*",
     ]
   }
 }
