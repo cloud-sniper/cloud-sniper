@@ -16,8 +16,8 @@ resource "aws_lambda_function" "cloud_sniper_lambda_iam_automation" {
       HUB_ACCOUNT_CLOUD_SNIPER      = local.hub_account_id
       ROLE_SPOKE_CLOUD_SNIPER       = format("%s-%s", local.cloud_sniper_role_spoke_iam_automation, data.aws_region.current.name)
       HUB_ACCOUNT_NAME_CLOUD_SNIPER = local.hub_account_name
-      BUCKET_NAME                   = var.cloud_sniper_data_store
-      IAM_PATH                      = var.cloud_sniper_iam_path
+      BUCKET_NAME                   = local.cloud_sniper_data_store
+      IAM_PATH                      = local.cloud_sniper_iam_path
     }
   }
 
