@@ -10,13 +10,8 @@ locals {
     TagVersion = "1.0"
   }
 
-  ## Customize
-  hub_account_id   = "[account-id]"
-  webhook_slack    = "[https://hooks.slack.com/services/xxxx]"
-  hub_account_name = "[account-name]"
-
-  # IOCs outputs
-  cloud_sniper_iam_path = "/iam"
-  # S3 data store
-  cloud_sniper_data_store = "[s3-data-store]"
+  # Customize
+  hub_account_id   = "your account id"
+  webhook_slack    = "your slack webhook"
+  hub_account_name = "your account canonical name/alias"
 }
