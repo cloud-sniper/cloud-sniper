@@ -8,5 +8,5 @@ locals {
     DataClassification = "restricted"
     Name               = "Black Hat Asia - Dashboard"
   }
-  region = "us-west-2"
+  region = "" # => Your region 
 }

@@ -7,9 +7,9 @@ locals {
     TagVersion = "1.0"
   }
 
-  region = "us-west-2"
+  region = "" # => Your region 
 
-  main_account_id = "551784954523"
+  main_account_id = "" # => Your account 
 
   dynamodb_name = "cloud-sniper-automated-actions"
 
