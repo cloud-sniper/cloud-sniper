@@ -3,10 +3,13 @@ CLOUDSNIPER SLACK BOT
 ![alt text](images/img.png "button_bot")
 
 ## SLACK BOT
-This is the slack automation bot for cloudsniper. This bot works with lambdas to manage messages and delivers to slack the same using the `cloud-sniper` bot of slack.
-The bot also can handle `slack actions` using `APIGATEWAY` and `SLACKBOLT`
+This bot is the slack automation of CloudSniper. The bot works with AWS lambda functions to manage messages and send them to slack.
+The bot also can handle `slack actions` using `APIGATEWAY` and `SLACKBOLT`.
 
-#### EVENT TO SEND: 
+#### EVENT TO SEND AN EVENT
+
+The format of the events to be sent is as below:
+
 ```json
     {
         "sendTo": "#channel/@user",
@@ -22,16 +25,15 @@ The bot also can handle `slack actions` using `APIGATEWAY` and `SLACKBOLT`
     }
 ```
 
-##HOW TO USE IT? 
+## HOW TO USE IT
 
 1. Create a SLACK BOT with the following permissions:\
                     - `incoming-webhook`\
                     - `app_mentions:read`\
                     - `chat:write`\
                     - `chat:write.public`
-
 2. Deploy the stack using terraform.
-3. UPDATE the content of the secret with the following structure:
+3. UPDATE the content of the secret with the structure below:
 ```json
 {
   "SLACK_API_SECRET": "xoxb-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
@@ -41,15 +43,16 @@ The bot also can handle `slack actions` using `APIGATEWAY` and `SLACKBOLT`
 ```
 
 
-#### HOW TO SEND A MESSAGE?
-Add the permissions for execution into your lambda/service and add then use the `client.invoke` example:
+#### HOW TO SEND A MESSAGE
+
+Add execution permissions to your lambda/service and then use the `client.invoke` function, for example:
 
 ```python
 data = {
           "sendTo": "#security-testing-alerts",
           "button": "False",
-          "title": "This is a test message from the automation bot stack",
-          "description": "This is a test using the new automation stack for bot",
+          "title": "This is a test message from the automation stack of the bot",
+          "description": "This is a test using the new automation stack of the bot",
           "field_details": [
                 {
                   "name": "date",
@@ -57,11 +60,11 @@ data = {
                 },
                 {
                   "name": "Project",
-                  "description": "bla bla"
+                  "description": "blah blah"
                 },
                 {
                   "name": "What to do?",
-                  "description": "do no"
+                  "description": "do not know"
                 },
                 {
                   "name": "Who calls?",
@@ -78,15 +81,17 @@ response = client.invoke(
 
 ![alt text](images/bot_message.png "message_bot")
 
+
 #### HOW TO SEND A MESSAGES WITH A BUTTON?
-Add the permissions for execution into your lambda/service and add then use the `client.invoke` example:
+
+As befor, you need to add execution permissions to your lambda/service and use the `client.invoke` function:
 
 ```python
 data = {
           "sendTo": "#security-testing-alerts",
           "button": "True",
-          "title": "This is a test message from the automation bot stack",
-          "description": "This is a test using the new automation stack for bot",
+          "title": "This is a test message from the automation stack of the bot",
+          "description": "This is a test using the new automation stack of the bot",
           "field_details": [
                 {
                   "name": "date",
@@ -94,11 +99,11 @@ data = {
                 },
                 {
                   "name": "Project",
-                  "description": "bla bla"
+                  "description": "blah blah"
                 },
                 {
                   "name": "What to do?",
-                  "description": "do no"
+                  "description": "do not know"
                 },
                 {
                   "name": "Who calls?",
