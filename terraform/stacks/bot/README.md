@@ -4,7 +4,7 @@ CLOUDSNIPER SLACK BOT
 
 ## SLACK BOT
 This bot is the slack automation of CloudSniper. The bot works with AWS lambda functions to manage messages and send them to slack.
-The bot also can handle `slack actions` using `APIGATEWAY` and `SLACKBOLT`.
+The bot also can handle `slack actions` using `APIGATEWAY` and `SLACKBOT`.
 
 #### EVENT TO SEND AN EVENT
 
