@@ -3,4 +3,4 @@
 
 # OPEN SECURITY GROUPS AUTOMATION
 
-This is the automated detection stack for open security groups. This stack integrates cloudwatch event with a lambda function. 
+This is the detection stack for open security groups. It integrates CloudWatch events with a Lambda function.

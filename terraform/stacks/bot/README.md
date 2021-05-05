@@ -1,14 +1,14 @@
-CLOUDSNIPER SLACK BOT 
+Cloud Sniper Slack Bot 
 =============
 ![alt text](images/img.png "button_bot")
 
-## SLACK BOT
-This bot is the slack automation of CloudSniper. The bot works with AWS lambda functions to manage messages and send them to slack.
-The bot also can handle `slack actions` using `API GATEWAY` and `SLACKBOT`.
+## Slack bot integration
+This bot is CloudSniper's Slack automation. The bot works with AWS Lambda functions to manage messages and send them to slack.
+The bot can also handle `slack actions` using `API GATEWAY` and `SLACK BOT`.
 
-#### EVENT TO SEND AN EVENT
+#### Event management
 
-The format of the events to be sent is as below:
+The format of the events to be sent is as follows:
 
 ```json
     {
@@ -25,7 +25,7 @@ The format of the events to be sent is as below:
     }
 ```
 
-## HOW TO USE IT
+## How to use it
 
 1. Create a SLACK BOT with the following permissions:\
                     - `incoming-webhook`\
@@ -43,9 +43,9 @@ The format of the events to be sent is as below:
 ```
 
 
-#### HOW TO SEND A MESSAGE
+#### How to send a message
 
-Add execution permissions to your lambda/service and then use the `client.invoke` function, for example:
+Add execution permissions to your Lambda/service and then use the `client.invoke` function, for example:
 
 ```python
 data = {
@@ -82,9 +82,9 @@ response = client.invoke(
 ![alt text](images/bot_message.png "message_bot")
 
 
-#### HOW TO SEND A MESSAGES WITH A BUTTON?
+#### How to send a message through a button?
 
-As befor, you need to add execution permissions to your lambda/service and use the `client.invoke` function:
+As mentioned above, you need to add execution permissions to your Lambda/service and use the `client.invoke` function:
 
 ```python
 data = {
