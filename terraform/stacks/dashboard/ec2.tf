@@ -62,7 +62,7 @@ resource "aws_instance" "cloudsniper_dashboard" {
   instance_type          = "t2.medium"
   subnet_id              = var.subnet_id
   tags                   = local.cloud_sniper_tags
-  vpc_security_group_ids = ["${aws_security_group.access_restricted_ip.id}"]
+  vpc_security_group_ids = [aws_security_group.access_restricted_ip.id]
   key_name               = var.ssh_key_name
   iam_instance_profile   = aws_iam_instance_profile.dashboard_instance_profile.name
 
@@ -72,14 +72,17 @@ resource "aws_instance" "cloudsniper_dashboard" {
         sudo add-apt-repository ppa:openjdk-r/ppa
         sudo apt-get update
         sudo apt install -y openjdk-11-jdk unzip default-jre default-jdk
+        sudo apt install openjdk-11-jdk
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+        echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
         wget -qO - https://d3g5vo6xdbdb9a.cloudfront.net/GPG-KEY-opendistroforelasticsearch | sudo apt-key add -
         echo "deb https://d3g5vo6xdbdb9a.cloudfront.net/apt stable main" | sudo tee -a /etc/apt/sources.list.d/opendistroforelasticsearch.list
-        wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-7.8.0-amd64.deb
-        echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-        sudo dpkg -i elasticsearch-oss-7.8.0-amd64.deb
+        wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-7.10.2-amd64.deb
+        sudo dpkg -i elasticsearch-oss-7.10.2-amd64.deb
         sudo apt-get update
         sudo apt install -y opendistroforelasticsearch
+        sudo apt install opendistro-alerting=1.2.0.0-1
+        sudo apt install opendistro-sql=1.2.0.0-1
         sudo systemctl start elasticsearch.service
         sudo apt install -y opendistroforelasticsearch-kibana
         echo "server.host: 0.0.0.0" | sudo tee -a /etc/kibana/kibana.yml

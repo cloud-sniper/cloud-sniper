@@ -3,7 +3,7 @@ output "message" {
 }
 
 output "public_ip" {
-  value = "${aws_instance.cloudsniper_dashboard.public_ip}"
+  value = aws_instance.cloudsniper_dashboard.public_ip
 }
 
 output "KIBANA_URL" {
