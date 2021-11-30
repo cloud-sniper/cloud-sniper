@@ -79,7 +79,7 @@ def confirmed_event(body, respond):
                             "type": "section",
                             "text": {
                                 "type": "mrkdwn",
-                                "text": ":greenlight: *LOG* The user: @{0} confirms this notification and doesn't request the automated exception.".format(
+                                "text": ":white_check_mark: *LOG* The user: @{0} confirms this notification and doesn't request the automated exception.".format(
                                     confirming_username)
                             },
                         }

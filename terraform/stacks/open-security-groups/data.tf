@@ -91,8 +91,10 @@ statement {
 
     actions = [
       "dynamodb:GetItem",
+      "dynamodb:PutItem",
       "dynamodb:Query",
       "dynamodb:Scan",
+      "dynamodb:UpdateItem",
     ]
 
     resources = [
