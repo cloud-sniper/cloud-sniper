@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "cloud_sniper_table" {
-  for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
 
   name           = "table-security-ir-automation"
   read_capacity  = 5
