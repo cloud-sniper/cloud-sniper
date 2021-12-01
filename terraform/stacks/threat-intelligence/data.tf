@@ -28,6 +28,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_spoke_threat_intell
 }
 
 data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence_automation" {
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
 
   statement {
     effect = "Allow"
@@ -188,7 +189,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_beaconing_detection
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}",
+      "arn:aws:s3:::${join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])}",
     ]
   }
 
@@ -215,7 +216,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_beaconing_detection
     ]
 
     resources = [
-      "arn:aws:s3:::${aws_s3_bucket.cloud_sniper_s3_bucket_data_store["hub"].id}/*",
+      "arn:aws:s3:::${join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])}/*",
     ]
   }
 }
