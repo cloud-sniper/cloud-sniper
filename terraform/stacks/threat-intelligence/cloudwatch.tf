@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_event_rule" "cloud_sniper_cloudwatch_event_rule_threat_intelligence_automation" {
-  for_each    = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each    = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   name        = "cloud-sniper-event-rule-threat-intelligence"
   description = "cloud-sniper-event-rule-threat-intelligence"
 
@@ -18,7 +18,7 @@ PATTERN
 }
 
 resource "aws_cloudwatch_event_rule" "cloud_sniper_cloudwatch_event_rule_schedule_threat_intelligence_automation" {
-  for_each            = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each            = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   name                = "cloud-sniper-event-rule-schedule-threat-intelligence"
   description         = "cloud-sniper-event-rule-schedule-threat-intelligence"
   schedule_expression = "rate(5 minutes)"
@@ -27,19 +27,19 @@ resource "aws_cloudwatch_event_rule" "cloud_sniper_cloudwatch_event_rule_schedul
 }
 
 resource "aws_cloudwatch_event_target" "cloud_sniper_cloudwatch_event_target_threat_intelligence_automation" {
-  for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   rule     = aws_cloudwatch_event_rule.cloud_sniper_cloudwatch_event_rule_threat_intelligence_automation["hub"].name
   arn      = aws_sqs_queue.cloud_sniper_sqs_queue_threat_intelligence_automation["hub"].arn
 }
 
 resource "aws_cloudwatch_event_target" "cloud_sniper_cloudwatch_event_rule_schedule_threat_intelligence_automation" {
-  for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   rule     = aws_cloudwatch_event_rule.cloud_sniper_cloudwatch_event_rule_schedule_threat_intelligence_automation["hub"].name
   arn      = aws_lambda_function.cloud_sniper_lambda_threat_intelligence_automation["hub"].arn
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloud_sniper_cloudwatch_metric_alarm_threat_intelligence_automation" {
-  for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
 
   alarm_name          = "${aws_lambda_function.cloud_sniper_lambda_threat_intelligence_automation["hub"].function_name}-errors"
   comparison_operator = "GreaterThanOrEqualToThreshold"

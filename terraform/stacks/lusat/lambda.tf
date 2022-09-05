@@ -11,8 +11,8 @@ resource "aws_lambda_function" "cloud_sniper_lambda_lusat" {
 
   environment {
     variables = {
-      BUCKET_NAME                   = var.cloud_sniper_data_store
-      LUSAT_PATH                    = var.cloud_sniper_lusat_path
+      BUCKET_NAME = var.cloud_sniper_data_store
+      LUSAT_PATH  = var.cloud_sniper_lusat_path
     }
   }
 

@@ -6,5 +6,5 @@ resource "aws_guardduty_member" "guardduty_members_security" {
   account_id         = element(local.account_ids_except_current, count.index)
 
   #add your email format
-  email              = format("format@domain.com", element(local.account_names_except_current, count.index))
+  email = format("format@domain.com", element(local.account_names_except_current, count.index))
 }

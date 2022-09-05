@@ -44,9 +44,11 @@ Ways you can contribute:
 
 ### Releases
 
-* EKOLABS - EKOPARTY 2019
+* ARSENAL - BLACK HAT USA 2021
+* ARSENAL - BLACK HAT ASIA 2021
 * ARSENAL - BLACK HAT USA 2020
-* ARSENAL - BLACK HAT ASIA - 2021 (Upcoming release)
+* EKOLABS - EKOPARTY 2019
+
 
 ### Code of Conduct
 

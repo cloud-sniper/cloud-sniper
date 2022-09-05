@@ -13,7 +13,7 @@ resource "aws_lambda_function" "open_security_groups_automation" {
 
   environment {
     variables = {
-      DYNAMODB_NAME  = local.dynamodb_name,
+      DYNAMODB_NAME   = local.dynamodb_name,
       LAMBDA_BOT_NAME = local.bot_lambda_name
     }
   }

@@ -42,9 +42,8 @@ portProbeAction = [
 ]
 
 instanceDetails = [
-    "UnauthorizedAccess:EC2/TorIPCaller",
+    "UnauthorizedAccess:EC2/TorIPCaller", #deprecated finding
 ]
-
 
 awsApiCallAction = [
     "Recon:IAMUser/TorIPCaller",
