@@ -1,12 +1,13 @@
 resource "aws_sqs_queue" "cloud_sniper_sqs_queue_threat_intelligence_automation" {
-  for_each = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   name     = join("-", ["cloud-sniper-sqs-queue-threat-intelligence-automation", data.aws_region.current.name])
 
   tags = local.cloud_sniper_tags
 }
 
 resource "aws_sqs_queue_policy" "cloud_sniper_sqs_queue_policy_security_ir" {
-  for_each  = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
+
   queue_url = aws_sqs_queue.cloud_sniper_sqs_queue_threat_intelligence_automation["hub"].id
 
   policy = <<POLICY

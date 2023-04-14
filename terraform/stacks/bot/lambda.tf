@@ -34,7 +34,7 @@ resource "aws_lambda_function" "slack_automation_bot_button" {
   environment {
     variables = {
       SLACK_AUTOMATION_BOT = local.slack_automation_bot_secret,
-      DYNAMODB_NAME = local.dynamodb_name
+      DYNAMODB_NAME        = local.dynamodb_name
     }
   }
 }

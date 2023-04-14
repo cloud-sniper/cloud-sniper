@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automation" {
-  for_each         = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each         = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   function_name    = "cloud-sniper-lambda-threat-intelligence-automation"
   description      = "Cloud Sniper threat intelligence automation"
   handler          = "cloud_sniper_threat_intelligence.cloud_sniper_threat_intelligence"
@@ -27,7 +27,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
 }
 
 resource "aws_lambda_function" "cloud_sniper_lambda_beaconing_detection" {
-  for_each      = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each      = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   function_name = "cloud-sniper-lambda-beaconing-detection"
   description   = "Cloud Sniper beaconing detection"
   handler       = "cloud_sniper_beaconing_detection.cloud_sniper_beaconing_detection"
@@ -48,7 +48,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_beaconing_detection" {
 }
 
 resource "aws_lambda_permission" "cloud_sniper_permission_beaconing_detection" {
-  for_each      = { "hub" = local.hub_account_id } == { "hub" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each      = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.cloud_sniper_lambda_beaconing_detection["hub"].function_name
   principal     = "sns.amazonaws.com"

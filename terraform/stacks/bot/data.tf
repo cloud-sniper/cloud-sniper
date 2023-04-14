@@ -113,7 +113,7 @@ data "aws_iam_policy_document" "policy_document_slack_automation_bot_button" {
   }
 
   statement {
-      effect = "Allow"
+    effect = "Allow"
 
     actions = [
       "dynamodb:GetItem",
@@ -123,10 +123,10 @@ data "aws_iam_policy_document" "policy_document_slack_automation_bot_button" {
       "dynamodb:UpdateItem",
     ]
 
-      resources = [
-        "arn:aws:dynamodb:${local.region}:${local.main_account_id}:table/${local.dynamodb_name}"
-      ]
-    }
+    resources = [
+      "arn:aws:dynamodb:${local.region}:${local.main_account_id}:table/${local.dynamodb_name}"
+    ]
+  }
 }
 
 data "archive_file" "slack_automation_bot" {

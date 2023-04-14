@@ -86,7 +86,7 @@ data "aws_iam_policy_document" "open_security_group_automation" {
     resources = ["arn:aws:ec2:*:*:security-group/*"]
   }
 
-statement {
+  statement {
     effect = "Allow"
 
     actions = [

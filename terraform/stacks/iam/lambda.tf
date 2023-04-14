@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "cloud_sniper_lambda_iam_automation" {
-  for_each         = { "infra" = local.hub_account_id } == { "infra" = data.aws_caller_identity.current.account_id } ? { hub : true } : {}
+  for_each         = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
   function_name    = "cloud-sniper-lambda-iam-automation"
   description      = "Cloud Sniper Incident and Response IAM automation"
   handler          = "cloud_sniper_iam.cloud_sniper_iam"
