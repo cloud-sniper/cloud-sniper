@@ -38,7 +38,7 @@ Currently available for AWS, our system is poised for expansion to other cloud p
 We welcome all contributions, suggestions, and feedback, so please do not hesitate to reach out. 
 
 ## Releases
-- ARSENAL - BLACK HAT USA 2023 (selected but wasn't presented due to scheduling conflicts)
+- ARSENAL - BLACK HAT USA 2023 (selected, presentation cancelled due to scheduling conflicts)
 - ARSENAL - BLACK HAT USA 2021
 - ARSENAL - BLACK HAT ASIA 2021
 - ARSENAL - BLACK HAT USA 2020
