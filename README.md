@@ -4,15 +4,16 @@
 
 # Cloud Sniper : Detection-as-code platform
 
-Cloud Sniper is a platform designed to manage Cloud Security Operations. It is intended to respond to security incidents by accurately analyzing and correlating cloud artifacts. It is meant to be used as a Cloud Security Operations platform to detect and remediate security incidents by showing a complete visibility of the company's cloud security posture.
 
-We are presenting a centralized Incident and Response platform, which executes automatic actions, by learning from the analysts' expert knowledge. To do it, only native cloud artifacts and open source technologies are implemented. In this way, the community can extend the project with different security use cases.
+Cloud Sniper is a comprehensive platform meticulously designed to streamline Cloud Security Operations. It swiftly responds to security incidents by analyzing and correlating cloud artifacts, ensuring a holistic view of the company's cloud security posture.
 
-Cloud Sniper receives and processes security feeds, providing an automatic response mechanism to protect the cloud infrastructure. To detect attackers' advanced TTPs, Cloud Sniper Analytics module correlates IOCs providing enhanced security findings to the security analyst.
+Serving as a centralized Incident and Response hub, our platform executes automatic actions, leveraging cloud native artifacts and open-source technologies. This approach empowers the community to enrich the project with diverse security use cases.
 
-With this platform, you get a complete and comprehensive management system of the security incidents. At the same time, an advanced security analyst can integrate Cloud Sniper with external forensic or incident-and-response tools to ingest new security feeds. The platform automatically deploys and provides cloud-based integration with all native resources, in a fully modularized manner, making it very easy to extend for the community.
+Efficiently processing security feeds, Cloud Sniper autonomously safeguards the cloud infrastructure. Its Analytics module correlates Indicators of Compromise (IOCs) to unveil attacker tactics, techniques, and procedures (TTPs), furnishing analysts with enhanced security findings.
 
-The system is currently available for AWS, but it is to be extended to others cloud platforms.
+Users access a comprehensive incident management system through Cloud Sniper. Advanced security analysts seamlessly integrate external forensic or incident-and-response tools to ingest new security feeds. The platform deploys and integrates with native cloud resources in a fully modularized manner, facilitating easy extension by the community.
+
+Currently available for AWS, our system is poised for expansion to other cloud platforms.
 
 ## Features
 
@@ -20,8 +21,8 @@ The system is currently available for AWS, but it is to be extended to others cl
 - Security analytics
 - Incident and Response dashboards
 - Alerting
-- Incident and Response Simulations
-- Internal Threat Intelligence Feeds, Inventory and Compliance Data Collection
+- Incident and Response Simulations (under refactor)
+- Internal Threat Intelligence Feeds, Inventory and Compliance Data Collection (under refactor)
 
 ## Usage
 
@@ -38,6 +39,7 @@ We welcome all contributions, suggestions, and feedback, so please do not hesita
 
 
 ## Releases
+- ARSENAL - BLACK HAT USA 2023 (selected but wasn't presented due to scheduling conflicts)
 - ARSENAL - BLACK HAT USA 2021
 - ARSENAL - BLACK HAT ASIA 2021
 - ARSENAL - BLACK HAT USA 2020
