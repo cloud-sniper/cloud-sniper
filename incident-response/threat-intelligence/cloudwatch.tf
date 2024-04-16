@@ -39,8 +39,7 @@ resource "aws_cloudwatch_event_target" "cloud_sniper_cloudwatch_event_rule_sched
 }
 
 resource "aws_cloudwatch_metric_alarm" "cloud_sniper_cloudwatch_metric_alarm_threat_intelligence_automation" {
-  for_each = local.is_hub_account ? { hub : true } : {}
-
+  for_each            = local.is_hub_account ? { hub : true } : {}
   alarm_name          = "${aws_lambda_function.cloud_sniper_lambda_threat_intelligence_automation["hub"].function_name}-errors"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "1"
