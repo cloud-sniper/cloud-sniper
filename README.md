@@ -45,7 +45,7 @@ We welcome all contributions, suggestions, and feedback, so please do not hesita
 - EKOLABS - EKOPARTY 2019
 
 ## Code of Conduct
-This project adheres to the Linux Foundation [Code of Conduct](https://events.linuxfoundation.org/about/code-of-conduct/) available on the event page. By participating, you are expected to honor this code.Ways you can contribute:
+This project adheres to the Linux Foundation [Code of Conduct](https://events.linuxfoundation.org/about/code-of-conduct/) available on the event page. By participating, you are expected to honor this code. Ways you can contribute:
 - Report potential bugs 
 - Request a feature
 - Join our community
