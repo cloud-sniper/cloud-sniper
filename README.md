@@ -26,7 +26,10 @@ Currently available for AWS, our system is poised for expansion to other cloud p
 
 ## Usage
 
-- [Terraform deployment](https://github.com/cloud-sniper/cloud-sniper/tree/master/terraform)
+- [Terraform](https://github.com/cloud-sniper/cloud-sniper/blob/master/incident-response/README.md)
+
+
+https://github.com/cloud-sniper/cloud-sniper/blob/master/incident-response/README.md
 
 ## Get Involved
 
