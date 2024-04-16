@@ -36,7 +36,7 @@ resource "aws_lambda_function" "cloud_sniper_lambda_beaconing_detection" {
   memory_size   = 1024
   timeout       = 300
   role          = aws_iam_role.cloud_sniper_role_beaconing_detection["hub"].arn
-  runtime       = "python3.6"
+  runtime       = "python3.10"
 
   environment {
     variables = {
