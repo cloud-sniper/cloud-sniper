@@ -1,12 +1,18 @@
+# macOS files
 .DS_Store
+
+# IDE files
 *.zip
 .idea
-.terraform
+
+# Terraform files
+.terraform/
 main.tf
 remote_backend.tf
-.terraform/
 terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvarsf
-terraform.tfstate.*.backup
 tfplan
+
+# Backup files
+*.backup
