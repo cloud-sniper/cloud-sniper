@@ -1,4 +1,4 @@
-![Cloud Sniper](../../../images/logo.png "Cloud Sniper")
+![Cloud Sniper](../../images/logo.png "Cloud Sniper")
 
 ## *Cloud Sniper Threat Intelligence Stack*
 
