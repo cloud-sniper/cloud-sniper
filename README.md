@@ -37,7 +37,6 @@ Currently available for AWS, our system is poised for expansion to other cloud p
 
 We welcome all contributions, suggestions, and feedback, so please do not hesitate to reach out. 
 
-
 ## Releases
 - ARSENAL - BLACK HAT USA 2023 (selected but wasn't presented due to scheduling conflicts)
 - ARSENAL - BLACK HAT USA 2021
@@ -52,14 +51,3 @@ This project adheres to the Linux Foundation [Code of Conduct](https://events.li
 - Join our community
 - Submit a PR for open issues
 - Fix or improve documentation
-
-## Releases
-
-- ARSENAL - BLACK HAT USA 2021
-- ARSENAL - BLACK HAT ASIA 2021
-- ARSENAL - BLACK HAT USA 2020
-- EKOLABS - EKOPARTY 2019
-
-## Code of Conduct
-
-This project adheres to the Linux Foundation [Code of Conduct](https://events.linuxfoundation.org/about/code-of-conduct/) available on the event page. By participating, you are expected to honor this code.
