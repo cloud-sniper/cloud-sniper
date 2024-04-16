@@ -28,9 +28,6 @@ Currently available for AWS, our system is poised for expansion to other cloud p
 
 - [Terraform](https://github.com/cloud-sniper/cloud-sniper/blob/master/incident-response/README.md)
 
-
-https://github.com/cloud-sniper/cloud-sniper/blob/master/incident-response/README.md
-
 ## Get Involved
 
 - [EMAIL](mailto:cloudsniper.cba@gmail.com)
