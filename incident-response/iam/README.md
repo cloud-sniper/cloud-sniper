@@ -1,4 +1,4 @@
-![Cloud Sniper Logo](../../../images/logo.png "Cloud Sniper")
+![Cloud Sniper Logo](../../images/logo.png "Cloud Sniper")
 
 ---
 
