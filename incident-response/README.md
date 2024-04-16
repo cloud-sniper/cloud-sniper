@@ -23,7 +23,7 @@
 
 2. Navigate to the desired stack directory:
 ```bash
-~$ cd cloud-sniper/terraform/stacks/[stack-name]
+~$ cd cloud-sniper/incident-response/[stack-name]
 ```
 
 3. Set the required environment variables in the `variables.tf` file.
