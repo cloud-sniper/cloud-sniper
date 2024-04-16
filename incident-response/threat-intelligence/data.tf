@@ -5,7 +5,7 @@ data "aws_region" "current" {}
 data "aws_iam_policy_document" "cloud_sniper_policy_document_assume_spoke_threat_intelligence_automation" {
   statement {
     principals {
-      identifiers = ["arn:aws:iam::${local.hub_account_id}:role/${format("%s-%s", local.cloud_sniper_assume_role_threat_intelligence_automation, data.aws_region.current.name)}"]
+      identifiers = ["arn:aws:iam::${var.cloud_sniper_hub_account_id}:role/${format("%s-%s", local.cloud_sniper_assume_role_threat_intelligence_automation, data.aws_region.current.name)}"]
       type        = "AWS"
     }
 
@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "cloud_sniper_policy_document_spoke_threat_intell
 }
 
 data "aws_iam_policy_document" "cloud_sniper_policy_document_threat_intelligence_automation" {
-  for_each = local.hub_account_id == data.aws_caller_identity.current.account_id ? { hub : true } : {}
+  for_each = local.is_hub_account ? { hub : true } : {}
 
   statement {
     effect = "Allow"

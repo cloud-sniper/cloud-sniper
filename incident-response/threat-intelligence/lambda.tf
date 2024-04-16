@@ -14,8 +14,8 @@ resource "aws_lambda_function" "cloud_sniper_lambda_threat_intelligence_automati
     variables = {
       SQS_QUEUE_CLOUD_SNIPER      = aws_sqs_queue.cloud_sniper_sqs_queue_threat_intelligence_automation["hub"].id
       DYNAMO_TABLE_CLOUD_SNIPER   = aws_dynamodb_table.cloud_sniper_table["hub"].name
-      WEBHOOK_URL_CLOUD_SNIPER    = local.webhook_slack
-      HUB_ACCOUNT_ID_CLOUD_SNIPER = local.hub_account_id
+      WEBHOOK_URL_CLOUD_SNIPER    = var.cloud_sniper_slack_webhook
+      HUB_ACCOUNT_ID_CLOUD_SNIPER = var.cloud_sniper_hub_account_id
       ROLE_SPOKE_CLOUD_SNIPER     = local.cloud_sniper_role_spoke_threat_intelligence_automation
       BUCKET_NAME                 = join("-", [var.cloud_sniper_data_store, data.aws_region.current.name])
       IOCS_PATH                   = var.cloud_sniper_iocs_path
