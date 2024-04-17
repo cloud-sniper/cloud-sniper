@@ -1,6 +1,6 @@
-Cloud Sniper Slack Bot 
+Cloud Sniper Slack Bot (to be refactored)
 =============
-![alt text](images/img.png "button_bot")
+![alt text](../../images/logo.png "button_bot")
 
 ## Slack bot integration
 This bot is CloudSniper's Slack automation. The bot works with AWS Lambda functions to manage messages and send them to slack.
@@ -79,9 +79,6 @@ response = client.invoke(
     )
 ```
 
-![alt text](images/bot_message.png "message_bot")
-
-
 #### How to send a message through a button?
 
 As mentioned above, you need to add execution permissions to your Lambda/service and use the `client.invoke` function:
@@ -117,5 +114,3 @@ response = client.invoke(
         Payload = json.dumps(data)
     )
 ```
-
-![alt text](images/bot_message_button.png "button_bot")
